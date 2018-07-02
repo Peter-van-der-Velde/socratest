@@ -8,4 +8,4 @@ Icon=application-default-icon
 Terminal=false
 Type=Application
 X-GNOME-Gettext-Domain=libre_lehrer
-Keywords=words;learning;
+Keywords=words;learning;GTK;
