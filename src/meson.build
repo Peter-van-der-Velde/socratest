@@ -1,5 +1,5 @@
 executable(
-    meson.project_name(),
+	meson.project_name(),
     'Application.vala',
     dependencies: [
         core_deps,
