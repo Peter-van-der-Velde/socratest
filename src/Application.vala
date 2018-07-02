@@ -44,7 +44,22 @@ public class MyApp : Gtk.Application {
 		show_button.clicked.connect (() => {
 			var notification = new Notification (_("Hello World"));
 			notification.set_body (_("This is my first notification!"));
-			this.send_notification ("notify.app", notification);
+			var icon = new GLib.ThemedIcon ("dialog-warning");
+			notification.set_icon (icon);
+			this.send_notification ("com.gitlab.Peter_van_der_Velde.libre_lehrer", notification);
+		});
+
+		var replace_button = new Gtk.Button.with_label (_("Replace"));
+		grid.add (replace_button);
+
+		replace_button.clicked.connect (() => {
+			var notification = new Notification (_("Hello Again"));
+			notification.set_body (_("This is my second Notification!"));
+
+			var icon = new GLib.ThemedIcon ("dialog-warning");
+			notification.set_icon (icon);
+
+			this.send_notification ("com.gitlab.Peter_van_der_Velde.libre_lehrer", notification);
 		});
 
 		main_window.add (grid);
