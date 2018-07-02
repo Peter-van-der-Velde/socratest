@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Libre Lehrer
+GenericName=Word Learner App
+Comment=You can teach yourself words
+Categories=Utility;Education;
+Exec=com.gitlab.Peter_van_der_Velde.libre_lehrer
+Icon=application-default-icon
+Terminal=false
+Type=Application
+X-GNOME-Gettext-Domain=libre_lehrer
+Keywords=words;learning;

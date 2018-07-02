@@ -23,7 +23,7 @@ public class MyApp : Gtk.Application {
 
 	public MyApp () {
 		Object (
-			application_id: "libre_wrts",
+			application_id: "com.gitlab.Peter_van_der_Velde.libre_lehrer",
 			flags: ApplicationFlags.FLAGS_NONE
 		);
 	}
