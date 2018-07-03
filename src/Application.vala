@@ -19,60 +19,37 @@
 * Authored by: Peter van der Velde <petervandervelde2@gmail.com>
 */
 
-public class MyApp : Gtk.Application {
+// public class MyApp : Gtk.Application {
 
-	public MyApp () {
-		Object (
-			application_id: "com.gitlab.Peter_van_der_Velde.libre_lehrer",
-			flags: ApplicationFlags.FLAGS_NONE
-		);
-	}
+// 	public MyApp () {
+// 		Object (
+// 			application_id: "com.gitlab.Peter_van_der_Velde.libre_lehrer",
+// 			flags: ApplicationFlags.FLAGS_NONE
+// 		);
+// 	}
 
-	protected override void activate () {
-		var main_window = new Gtk.ApplicationWindow (this);
+// 	protected override void activate () {
+// 		var main_window = new ValaGtk.Application();
+// 		main_window.show_all ();
+// 		main_window.destroy.connect(Gtk.main_quit);
+// 		main_window.show_all ();
+// 		Gtk.main ();
+// 	}
 
-		var grid = new Gtk.Grid ();
-		grid.orientation = Gtk.Orientation.VERTICAL;
-		grid.row_spacing = 6;
+// 	// public static int main (string[] args) {
+// 	// 	var main_window = new ValaGtk.Application();
+// 	// 	main_window.show_all ();
+// 	// 	main_window.destroy.connect(Gtk.main_quit);
+// 	// 	main_window.show_all ();
+// 	// 	Gtk.main ();
+// 	// 	return 0;
+// 	// }
+// }
 
-		var title_label = new Gtk.Label (_("Notifications"));
-		var show_button = new Gtk.Button.with_label (_("Show"));
+[GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/libre_lehrer/main.ui")]
+public class ValaGtk.Application : Gtk.Window {
 
-		grid.add (title_label);
-		grid.add (show_button);
-
-		show_button.clicked.connect (() => {
-			var notification = new Notification (_("Hello World"));
-			notification.set_body (_("This is my first notification!"));
-			var icon = new GLib.ThemedIcon ("dialog-warning");
-			notification.set_icon (icon);
-			this.send_notification ("com.gitlab.Peter_van_der_Velde.libre_lehrer", notification);
-		});
-
-		var replace_button = new Gtk.Button.with_label (_("Replace"));
-		grid.add (replace_button);
-
-		replace_button.clicked.connect (() => {
-			var notification = new Notification (_("Hello Again"));
-			notification.set_body (_("This is my second Notification!"));
-
-			var icon = new GLib.ThemedIcon ("dialog-warning");
-			notification.set_icon (icon);
-
-			this.send_notification ("com.gitlab.Peter_van_der_Velde.libre_lehrer", notification);
-		});
-
-		main_window.add (grid);
-		main_window.show_all ();
-
-		main_window.default_height = 300;
-		main_window.default_width = 300;
-		main_window.title = "Hello World";
-		main_window.show_all ();
-	}
-
-	public static int main (string[] args) {
-		var app = new MyApp ();
-		return app.run (args);
+	construct {
+		print ("Hello World!\n");
 	}
 }

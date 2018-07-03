@@ -1,3 +1,10 @@
+gnome_module = import('gnome')
+
+resources = gnome_module.compile_resources(meson.project_name(),
+                                           meson.project_name() + '.gresource.xml',
+                                           source_dir: '.',
+                                            c_name: 'resources')
+
 install_data(
     meson.project_name() + '.gschema.xml',
     install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas')

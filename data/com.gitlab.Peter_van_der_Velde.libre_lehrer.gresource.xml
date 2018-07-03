@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/com/gitlab/Peter_van_der_Velde/libre_lehrer">
+    <file>main.ui</file>
+  </gresource>
+</gresources>
