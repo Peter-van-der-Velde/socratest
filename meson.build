@@ -7,6 +7,7 @@ project(
 i18n = import('i18n')
 
 add_global_arguments('-DGETTEXT_PACKAGE="com.gitlab.Peter_van_der_Velde.libre_lehrer"', language:'c')
+add_global_arguments('-rdynamic', language:'c')
 
 core_deps = [
     dependency('glib-2.0'),

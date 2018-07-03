@@ -1,9 +1,7 @@
 vala_args = [
     '--gresources=../data/com.gitlab.Peter_van_der_Velde.libre_lehrer.gresource.xml',
     '-g',
-    '--Xcc=-v',
 ]
-
 
 executable(
 	meson.project_name(),
