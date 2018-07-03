@@ -18,38 +18,30 @@
 *
 * Authored by: Peter van der Velde <petervandervelde2@gmail.com>
 */
+using Gtk;
 
-// public class MyApp : Gtk.Application {
+namespace LibreLehrer {
+	// public LibreLehrer.Services.Settings settings;
+}
 
-// 	public MyApp () {
-// 		Object (
-// 			application_id: "com.gitlab.Peter_van_der_Velde.libre_lehrer",
-// 			flags: ApplicationFlags.FLAGS_NONE
-// 		);
-// 	}
+public class LibreLehrer.Application : Granite.Application {
 
-// 	protected override void activate () {
-// 		var main_window = new ValaGtk.Application();
-// 		main_window.show_all ();
-// 		main_window.destroy.connect(Gtk.main_quit);
-// 		main_window.show_all ();
-// 		Gtk.main ();
-// 	}
+	public Application () {
+		Object (
+			application_id: "com.gitlab.Peter_van_der_Velde.libre_lehrer",
+			flags: ApplicationFlags.FLAGS_NONE
+		);
 
-// 	// public static int main (string[] args) {
-// 	// 	var main_window = new ValaGtk.Application();
-// 	// 	main_window.show_all ();
-// 	// 	main_window.destroy.connect(Gtk.main_quit);
-// 	// 	main_window.show_all ();
-// 	// 	Gtk.main ();
-// 	// 	return 0;
-// 	// }
-// }
+		app_launcher = "com.gitlab.Peter_van_der_Velde.libre_lehrer.desktop";
+		program_name = "Libre Lehrer";
+		exec_name = "com.gitlab.Peter_van_der_Velde.libre_lehrer";
+	}
 
-[GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/libre_lehrer/main.ui")]
-public class ValaGtk.Application : Gtk.Window {
-
-	construct {
-		print ("Hello World!\n");
+	protected override void activate () {
+		var window = new LibreLehrer.Window ();
+		this.add_window (window);
+		window.show_all ();
 	}
 }
+
+

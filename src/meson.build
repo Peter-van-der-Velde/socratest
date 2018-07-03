@@ -9,6 +9,7 @@ executable(
 	meson.project_name(),
     'Application.vala',
     'main.vala',
+    'Window.vala',
     resources,
     vala_args : vala_args,
     dependencies: [
