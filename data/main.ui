@@ -16,7 +16,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="home_button">
                 <property name="label">gtk-home</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -25,7 +25,7 @@
                 <property name="relief">none</property>
                 <property name="use_stock">True</property>
                 <property name="image_position">top</property>
-                <signal name="clicked" handler="go_home" swapped="no"/>
+                <signal name="clicked" handler="home_button_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -33,7 +33,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="playButton">
+              <object class="GtkButton" id="play_button">
                 <property name="label">gtk-media-play</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -42,6 +42,7 @@
                 <property name="relief">none</property>
                 <property name="use_stock">True</property>
                 <property name="image_position">top</property>
+                <signal name="clicked" handler="play_button_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -49,7 +50,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="add_button">
                 <property name="label">gtk-add</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -59,6 +60,7 @@
                 <property name="use_stock">True</property>
                 <property name="image_position">top</property>
                 <property name="always_show_image">True</property>
+                <signal name="clicked" handler="add_button_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -66,7 +68,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="edit_button">
                 <property name="label">gtk-edit</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -76,6 +78,7 @@
                 <property name="relief">none</property>
                 <property name="use_stock">True</property>
                 <property name="image_position">top</property>
+                <signal name="clicked" handler="edit_button_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -83,7 +86,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="remove_button">
                 <property name="label">gtk-remove</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -92,6 +95,7 @@
                 <property name="relief">none</property>
                 <property name="use_stock">True</property>
                 <property name="image_position">top</property>
+                <signal name="clicked" handler="remove_button_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -155,6 +159,7 @@
                     <property name="primary_icon_name">edit-find-symbolic</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="primary_icon_sensitive">False</property>
+                    <signal name="changed" handler="search_entry_changed" swapped="no"/>
                   </object>
                 </child>
                 <style>
