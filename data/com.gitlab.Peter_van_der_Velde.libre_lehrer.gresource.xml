@@ -2,5 +2,9 @@
 <gresources>
   <gresource prefix="/com/gitlab/Peter_van_der_Velde/libre_lehrer">
     <file>main.ui</file>
+    <file>home.ui</file>
+    <file>test.ui</file>
+    <file>test_results.ui</file>
+    <file>test_settings.ui</file>
   </gresource>
 </gresources>

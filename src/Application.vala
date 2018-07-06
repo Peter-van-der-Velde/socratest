@@ -22,6 +22,8 @@ using Gtk;
 
 namespace LibreLehrer {
 	// public LibreLehrer.Services.Settings settings;
+	public const string APP_NAME = "Libre Lehrer";
+	public const string TERMINAL_NAME = "libre_lehrer";
 }
 
 public class LibreLehrer.Application : Granite.Application {
@@ -42,6 +44,17 @@ public class LibreLehrer.Application : Granite.Application {
 		this.add_window (window);
 		window.show_all ();
 	}
+
+	static int main (string args[]) {
+
+		Environment.set_application_name (APP_NAME);
+		Environment.set_prgname (APP_NAME);
+
+		var application = new LibreLehrer.Application ();
+
+		return application.run (args);
+	}
+
 }
 
 
