@@ -25,6 +25,7 @@ executable(
         core_deps,
         dependency('gtk+-3.0'),
         dependency('granite'),
+        dependency('gee-0.8')
     ],
     install : true
 )

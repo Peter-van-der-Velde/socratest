@@ -5,6 +5,9 @@ public class LibreLehrer.Window : Gtk.Window {
 
 	private string search_entry_text;
 	private LibreLehrer.Home home_view;
+	private LibreLehrer.TestView test_view;
+	private LibreLehrer.TestResults test_results;
+	private LibreLehrer.TestSettings test_settings;
 
 	[GtkChild]
 	private Button home_button;
@@ -16,8 +19,16 @@ public class LibreLehrer.Window : Gtk.Window {
 	public Window () {
 		this.set_default_size (600,300);
 		search_entry_text = "";
-		home_view = new LibreLehrer.Home();
+		home_view = new LibreLehrer.Home ();
+		test_view = new LibreLehrer.TestView ();
+		test_results = new LibreLehrer.TestResults ();
+		test_settings = new LibreLehrer.TestSettings ();
+
 		main_stack.add_named(home_view, "Home View");
+		main_stack.add_named(test_view, "Test View");
+		main_stack.add_named(test_results, "TestResults View");
+		main_stack.add_named(test_settings, "TestSettings View");
+
 	}
 
 	// [GtkCallback]

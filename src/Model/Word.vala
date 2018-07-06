@@ -1,5 +1,4 @@
 
-
 public class Word {
 	private string word;
 	private string anwser;
