@@ -1,5 +1,5 @@
 vala_args = [
-    '--gresources=' + meson.source_root() + '/data/com.gitlab.Peter_van_der_Velde.libre_lehrer.gresource.xml',
+    '--gresources=' + meson.source_root() + '/data/com.gitlab.Peter_van_der_Velde.socratest.gresource.xml',
     '-g',
 ]
 

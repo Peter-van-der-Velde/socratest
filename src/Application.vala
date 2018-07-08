@@ -20,27 +20,27 @@
 */
 using Gtk;
 
-namespace LibreLehrer {
-	// public LibreLehrer.Services.Settings settings;
-	public const string APP_NAME = "Libre Lehrer";
-	public const string TERMINAL_NAME = "libre_lehrer";
+namespace Socratest {
+	// public Socratest.Services.Settings settings;
+	public const string APP_NAME = "Socratest";
+	public const string TERMINAL_NAME = "socratest";
 }
 
-public class LibreLehrer.Application : Granite.Application {
+public class Socratest.Application : Granite.Application {
 
 	public Application () {
 		Object (
-			application_id: "com.gitlab.Peter_van_der_Velde.libre_lehrer",
+			application_id: "com.gitlab.Peter_van_der_Velde.socratest",
 			flags: ApplicationFlags.FLAGS_NONE
 		);
 
-		app_launcher = "com.gitlab.Peter_van_der_Velde.libre_lehrer.desktop";
+		app_launcher = "com.gitlab.Peter_van_der_Velde.socratest.desktop";
 		program_name = "Libre Lehrer";
-		exec_name = "com.gitlab.Peter_van_der_Velde.libre_lehrer";
+		exec_name = "com.gitlab.Peter_van_der_Velde.socratest";
 	}
 
 	protected override void activate () {
-		var window = new LibreLehrer.Window ();
+		var window = new Socratest.Window ();
 		this.add_window (window);
 		window.show_all ();
 	}
@@ -50,7 +50,7 @@ public class LibreLehrer.Application : Granite.Application {
 		Environment.set_application_name (APP_NAME);
 		Environment.set_prgname (APP_NAME);
 
-		var application = new LibreLehrer.Application ();
+		var application = new Socratest.Application ();
 
 		return application.run (args);
 	}

@@ -1,11 +1,11 @@
-# Dutch translations for com.gitlab.Peter_van_der_Velde.libre_lehrer package.
-# Copyright (C) 2018 THE com.gitlab.Peter_van_der_Velde.libre_lehrer'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the com.gitlab.Peter_van_der_Velde.libre_lehrer package.
+# Dutch translations for com.gitlab.Peter_van_der_Velde.socratest package.
+# Copyright (C) 2018 THE com.gitlab.Peter_van_der_Velde.socratest'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.gitlab.Peter_van_der_Velde.socratest package.
 # Automatically generated, 2018.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: com.gitlab.Peter_van_der_Velde.libre_lehrer\n"
+"Project-Id-Version: com.gitlab.Peter_van_der_Velde.socratest\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-03 00:05+0200\n"
 "PO-Revision-Date: 2018-07-02 22:05+0200\n"

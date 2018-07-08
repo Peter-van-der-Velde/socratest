@@ -1,7 +1,7 @@
 using Gtk;
 
-[GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/libre_lehrer/test_settings.ui")]
-public class LibreLehrer.TestSettings : Gtk.Box {
+[GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/test_settings.ui")]
+public class Socratest.TestSettings : Gtk.Box {
 
 	private string search_entry_text;
 

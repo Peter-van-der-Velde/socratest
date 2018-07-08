@@ -1,12 +1,12 @@
 project(
-    'com.gitlab.Peter_van_der_Velde.libre_lehrer', 'vala', 'c',
+    'com.gitlab.Peter_van_der_Velde.socratest', 'vala', 'c',
     meson_version : '>= 0.43',
     version: '0.0.4'
 )
 
 i18n = import('i18n')
 
-add_global_arguments('-DGETTEXT_PACKAGE="com.gitlab.Peter_van_der_Velde.libre_lehrer"', language:'c')
+add_global_arguments('-DGETTEXT_PACKAGE="com.gitlab.Peter_van_der_Velde.socratest"', language:'c')
 add_global_link_arguments('-rdynamic', language:'c')
 
 core_deps = [

@@ -1,7 +1,7 @@
 using Gtk;
 
-[GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/libre_lehrer/home.ui")]
-public class LibreLehrer.Home : Gtk.Box {
+[GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/home.ui")]
+public class Socratest.Home : Gtk.Box {
 
 	private string search_entry_text;
 
@@ -9,7 +9,6 @@ public class LibreLehrer.Home : Gtk.Box {
 	private Box home_box;
 
 	public Home () {
-		// this.set_default_size (600,300);
 		search_entry_text = "";
 	}
 

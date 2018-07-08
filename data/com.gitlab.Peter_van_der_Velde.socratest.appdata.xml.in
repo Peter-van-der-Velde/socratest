@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2018 Peter van der Velde <petervandervelde2@gmail.com> -->
 <component type="desktop">
-  <id>com.gitlab.Peter_van_der_Velde.libre_lehrer.desktop</id>
+  <id>com.gitlab.Peter_van_der_Velde.socratest.desktop</id>
   <metadata_license>CC0</metadata_license>
   <name>Libre Lehrer</name>
   <summary>A Catchy Tagline</summary>
