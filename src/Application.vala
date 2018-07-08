@@ -35,7 +35,7 @@ public class Socratest.Application : Granite.Application {
 		);
 
 		app_launcher = "com.gitlab.Peter_van_der_Velde.socratest.desktop";
-		program_name = "Libre Lehrer";
+		program_name = "Socratest";
 		exec_name = "com.gitlab.Peter_van_der_Velde.socratest";
 	}
 

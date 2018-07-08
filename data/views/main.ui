@@ -18,32 +18,12 @@
             <property name="can_focus">False</property>
             <property name="spacing">0</property>
             <child>
-              <object class="GtkBox">
+              <object class="GtkButton" id="hd_home">
+                <property name="label" translatable="yes">Home</property>
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="hexpand">True</property>
-                <child>
-                  <object class="GtkButton" id="home_button">
-                    <property name="label">Home</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="hexpand">False</property>
-                    <property name="image_position">top</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child type="center">
-                  <placeholder/>
-                </child>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
               </object>
-              <packing>
-                <property name="position">2</property>
-              </packing>
             </child>
           </object>
           <packing>

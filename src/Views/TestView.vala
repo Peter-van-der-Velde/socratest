@@ -1,15 +1,51 @@
+/*
+* Copyright (c) 2018 Peter van der Velde (https://vandervelde.cc)
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public
+* License as published by the Free Software Foundation; either
+* version 2 of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+* Boston, MA 02110-1301 USA
+*
+* Authored by: Peter van der Velde <petervandervelde2@gmail.com>
+*/
 using Gtk;
 
 [GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/test.ui")]
 public class Socratest.TestView : Gtk.Box {
 
-	private string search_entry_text;
+	private Stack main_stack;
 
 	[GtkChild]
-	private Box home_box;
+	private Label cw_label;
 
-	public TestView () {
-		search_entry_text = "";
+	[GtkChild]
+	private Label current_word;
+
+	[GtkChild]
+	private Entry current_anwser;
+
+	[GtkChild]
+	private Label feedback;
+
+	[GtkChild]
+	private Label current_word_of;
+
+	public TestView (Stack main_stack) {
+		this.main_stack = main_stack;
 	}
 
+	[GtkCallback]
+	void next_button_clicked (Button button) {
+		stdout.printf ("next\n");
+	}
 }

@@ -1,41 +1,61 @@
+/*
+* Copyright (c) 2018 Peter van der Velde (https://vandervelde.cc)
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public
+* License as published by the Free Software Foundation; either
+* version 2 of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+* Boston, MA 02110-1301 USA
+*
+* Authored by: Peter van der Velde <petervandervelde2@gmail.com>
+*/
 using Gtk;
 
 [GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/home.ui")]
 public class Socratest.Home : Gtk.Box {
 
 	private string search_entry_text;
+	private Stack main_stack;
 
-	[GtkChild]
-	private Box home_box;
-
-	public Home () {
+	public Home (Stack main_stack) {
+		this.main_stack = main_stack;
 		search_entry_text = "";
 	}
 
 	[GtkCallback]
-	void search_entry_changed (Editable search_entry) {
+	private void search_entry_changed (Editable search_entry) {
 		search_entry_text = ((SearchEntry)search_entry).get_text();
-		stdout.printf("wrote \"%s\" in the search entry\n", search_entry_text);
+		stdout.printf ("wrote \"%s\" in the search entry\n", search_entry_text);
 	}
 
 	[GtkCallback]
-	void play_button_clicked (Button button) {
-		stdout.printf("clicked on the play button\n");
+	private void play_button_clicked (Button button) {
+		stdout.printf ("clicked on the play button\n");
+		main_stack.set_visible_child_name ("TestSettings View");
 	}
 
 	[GtkCallback]
-	void add_button_clicked (Button button) {
-		stdout.printf("clicked on the add button\n");
+	private void add_button_clicked (Button button) {
+		stdout.printf ("clicked on the add button\n");
 	}
 
 	[GtkCallback]
-	void edit_button_clicked (Button button) {
-		stdout.printf("clicked on the edit button\n");
+	private void edit_button_clicked (Button button) {
+		stdout.printf ("clicked on the edit button\n");
 	}
 
 	[GtkCallback]
-	void remove_button_clicked (Button button) {
-		stdout.printf("clicked on the remove button\n");
+	private void remove_button_clicked (Button button) {
+		stdout.printf ("clicked on the remove button\n");
 	}
 
 }

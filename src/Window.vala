@@ -1,3 +1,23 @@
+/*
+* Copyright (c) 2018 Peter van der Velde (https://vandervelde.cc)
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public
+* License as published by the Free Software Foundation; either
+* version 2 of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+* Boston, MA 02110-1301 USA
+*
+* Authored by: Peter van der Velde <petervandervelde2@gmail.com>
+*/
 using Gtk;
 
 [GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/main.ui")]
@@ -10,59 +30,26 @@ public class Socratest.Window : Gtk.Window {
 	private Socratest.TestSettings test_settings;
 
 	[GtkChild]
-	private Button home_button;
+	private Button hd_home;
 
 	[GtkChild]
 	private Stack main_stack;
 
-
 	public Window () {
 		this.set_default_size (600,300);
 		search_entry_text = "";
-		home_view = new Socratest.Home ();
-		test_view = new Socratest.TestView ();
-		test_results = new Socratest.TestResults ();
-		test_settings = new Socratest.TestSettings ();
+		home_view = new Socratest.Home (main_stack);
+		test_view = new Socratest.TestView (main_stack);
+		test_results = new Socratest.TestResults (main_stack);
+		test_settings = new Socratest.TestSettings (main_stack);
 
-		main_stack.add_named(home_view, "Home View");
-		main_stack.add_named(test_view, "Test View");
-		main_stack.add_named(test_results, "TestResults View");
-		main_stack.add_named(test_settings, "TestSettings View");
+		main_stack.add_named (home_view, "Home View");
+		main_stack.add_named (test_view, "Test View");
+		main_stack.add_named (test_results, "TestResults View");
+		main_stack.add_named (test_settings, "TestSettings View");
 
+		hd_home.clicked.connect (() => {
+				main_stack.set_visible_child_name ("Home View");
+		});
 	}
-
-	// [GtkCallback]
-	// void search_entry_changed (Editable search_entry) {
-	// 	search_entry_text = ((SearchEntry)search_entry).get_text();
-	// 	stdout.printf("wrote \"%s\" in the search entry\n", search_entry_text);
-	// }
-
-	// [GtkCallback]
-	// void home_button_clicked (Button button) {
-	// 	stdout.printf("clicked on the home button\n");
-	// 	// home_button.hide();
-	// 	this = home_view;
-	// }
-
-	// [GtkCallback]
-	// void play_button_clicked (Button button) {
-	// 	stdout.printf("clicked on the play button\n");
-	// }
-
-	// [GtkCallback]
-	// void add_button_clicked (Button button) {
-	// 	stdout.printf("clicked on the add button\n");
-	// }
-
-	// [GtkCallback]
-	// void edit_button_clicked (Button button) {
-	// 	stdout.printf("clicked on the edit button\n");
-	// }
-
-	// [GtkCallback]
-	// void remove_button_clicked (Button button) {
-	// 	stdout.printf("clicked on the remove button\n");
-	// }
-
 }
-
