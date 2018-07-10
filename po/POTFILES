@@ -1,1 +1,3 @@
 src/Application.vala
+src/Views/TestSettings.vala
+src/Views/TestView.vala

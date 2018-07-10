@@ -10,9 +10,11 @@ vala_source = [
     'Views/TestSettings.vala',
     'Views/TestResults.vala',
     'Views/Welcome.vala',
+    'Views/AddTest.vala',
     'Model/Word.vala',
     'Model/WordList.vala',
     'Model/Test.vala',
+    'Model/TestDB.vala',
 ]
 
 executable(
@@ -25,7 +27,8 @@ executable(
         core_deps,
         dependency('gtk+-3.0'),
         dependency('granite'),
-        dependency('gee-0.8')
+        dependency('gee-0.8'),
+        dependency('sqlite3'),
     ],
     install : true
 )

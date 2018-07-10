@@ -18,39 +18,13 @@
 *
 * Authored by: Peter van der Velde <petervandervelde2@gmail.com>
 */
-using Gtk;
+using Gee;
+using Sqlite;
 
-[GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/test.ui")]
-public class Socratest.TestView : Gtk.Box {
+public class TestDB {
 
-	private Stack main_stack;
+	public TestDB () {
 
-	[GtkChild]
-	private Label cw_label;
-
-	[GtkChild]
-	private Label current_word;
-
-	[GtkChild]
-	private Entry current_anwser;
-
-	[GtkChild]
-	private Label feedback;
-
-	[GtkChild]
-	private Label current_word_of;
-
-
-
-	public TestView (Stack main_stack) {
-		this.main_stack = main_stack;
-
-		cw_label.set_text (_("Current Word:"));
-		feedback.set_text ("");
 	}
 
-	[GtkCallback]
-	void next_button_clicked (Button button) {
-		stdout.printf ("next\n");
-	}
 }

@@ -6,5 +6,6 @@
     <file>views/test.ui</file>
     <file>views/test_results.ui</file>
     <file>views/test_settings.ui</file>
+    <file>views/add_test.ui</file>
   </gresource>
 </gresources>

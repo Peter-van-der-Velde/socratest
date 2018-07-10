@@ -28,6 +28,7 @@ public class Socratest.Window : Gtk.Window {
 	private Socratest.TestView test_view;
 	private Socratest.TestResults test_results;
 	private Socratest.TestSettings test_settings;
+	private Socratest.AddTest add_test;
 
 	[GtkChild]
 	private Button hd_home;
@@ -42,11 +43,13 @@ public class Socratest.Window : Gtk.Window {
 		test_view = new Socratest.TestView (main_stack);
 		test_results = new Socratest.TestResults (main_stack);
 		test_settings = new Socratest.TestSettings (main_stack);
+		add_test = new Socratest.AddTest (main_stack);
 
 		main_stack.add_named (home_view, "Home View");
 		main_stack.add_named (test_view, "Test View");
 		main_stack.add_named (test_results, "TestResults View");
 		main_stack.add_named (test_settings, "TestSettings View");
+		main_stack.add_named (add_test, "AddTest View");
 
 		hd_home.clicked.connect (() => {
 				main_stack.set_visible_child_name ("Home View");

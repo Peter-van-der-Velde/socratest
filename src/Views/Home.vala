@@ -26,6 +26,12 @@ public class Socratest.Home : Gtk.Box {
 	private string search_entry_text;
 	private Stack main_stack;
 
+	[GtkChild]
+	private Gtk.ListStore test_list_store;
+
+	[GtkChild]
+	private TreeView test_tree;
+
 	public Home (Stack main_stack) {
 		this.main_stack = main_stack;
 		search_entry_text = "";
@@ -46,6 +52,13 @@ public class Socratest.Home : Gtk.Box {
 	[GtkCallback]
 	private void add_button_clicked (Button button) {
 		stdout.printf ("clicked on the add button\n");
+		main_stack.set_visible_child_name ("AddTest View");
+
+		// test code
+		int id = 0;
+		Gtk.TreeIter iter;
+        test_list_store.append (out iter);
+        test_list_store.set (iter, 0, id, 1,"English", 2, "test", 3, 2);
 	}
 
 	[GtkCallback]

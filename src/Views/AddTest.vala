@@ -20,8 +20,8 @@
 */
 using Gtk;
 
-[GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/test_settings.ui")]
-public class Socratest.TestSettings : Gtk.Box {
+[GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/add_test.ui")]
+public class Socratest.AddTest : Gtk.Box {
 
 	private Stack main_stack;
 
@@ -38,16 +38,13 @@ public class Socratest.TestSettings : Gtk.Box {
 	private ComboBoxText type_of_test_combobox;
 
 	[GtkChild]
-	private Switch repeat;
+	private CheckButton repeat;
 
-	[GtkChild]
-	private Label repeat_label;
-
-	public TestSettings (Stack main_stack) {
+	public AddTest (Stack main_stack) {
 		this.main_stack = main_stack;
 		order.set_text (_("Order:"));
 		type_label.set_text (_("Type of test:"));
-		repeat_label.set_text (_("Repeat until every anwser is correct"));
+		repeat.set_label (_("Repeat until every anwser is correct"));
 
 		order_combobox.append ("LR", "L - R");
 		order_combobox.append ("RL", "R - L");
