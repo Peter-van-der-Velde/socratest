@@ -23,8 +23,57 @@ using Sqlite;
 
 public class TestDB {
 
+	private Sqlite.Database db;
+	private string database_location;
+
 	public TestDB () {
 
+		#if W32
+		string appdata = GLib.Environment.get_variable ("APPDATA");
+
+		#else
+		// get and if needed create the unix $home data filelocations.
+		string appdata = GLib.Environment.get_variable ("XDG_DATA_HOME");
+		if (appdata == null) {
+			appdata = GLib.Environment.get_variable ("HOME");
+			appdata += "/.local/share";
+			bool local_share_exists = FileUtils.test (appdata, FileTest.EXISTS);
+			if (!local_share_exists) {
+				try {
+					File appdata_folder = File.new_for_path (appdata);
+					appdata_folder.make_directory ();
+				} catch (Error e) {
+					stdout.printf("Error: %s\n", e.message);
+				}
+			}
+		}
+		#endif
+
+		bool appdata_location_exists = FileUtils.test (@"$appdata/socratest", FileTest.EXISTS);
+		if (!appdata_location_exists) {
+			try {
+				File appdata_folder = File.new_for_path (@"$appdata/socratest");
+				appdata_folder.make_directory ();
+			} catch (Error e) {
+				stdout.printf("Error: %s\n", e.message);
+			}
+		}
+		database_location = @"$appdata/socratest/test_database.db";
+
+		string errmsg;
+
+		int ec = Sqlite.Database.open (database_location, out db);
+		if (ec != Sqlite.OK) {
+			stderr.printf ("Can't open database: %d: %s\n", db.errcode (), db.errmsg ());
+			Gtk.main_quit ();
+		}
+
+	}
+
+	public Test[] get_all_tests () {
+		Test[] all_tests = new Test[0];
+
+		return all_tests;
 	}
 
 }

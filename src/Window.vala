@@ -39,6 +39,8 @@ public class Socratest.Window : Gtk.Window {
 	public Window () {
 		this.set_default_size (600,300);
 		search_entry_text = "";
+		TestDB test_db = new TestDB ();
+
 		home_view = new Socratest.Home (main_stack);
 		test_view = new Socratest.TestView (main_stack);
 		test_results = new Socratest.TestResults (main_stack);
