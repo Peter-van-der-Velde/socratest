@@ -29,8 +29,8 @@ public class Test {
 	private int year;
 	private string course;
 
-	public Test (string word_list, int type, int year, string course, int test_type, int order) {
-		this.word_list = new WordList (word_list, type, year);
+	public Test (string word_list, string name, int year, string course, int test_type, int order) {
+		this.word_list = new WordList (word_list, year, course, name);
 		this.test_type = test_type;
 		this.order = order;
 	}

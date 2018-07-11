@@ -44,7 +44,7 @@ public class TestDB {
 					File appdata_folder = File.new_for_path (appdata);
 					appdata_folder.make_directory ();
 				} catch (Error e) {
-					stdout.printf("Error: %s\n", e.message);
+					stdout.printf ("Error: %s\n", e.message);
 				}
 			}
 		}
@@ -56,10 +56,11 @@ public class TestDB {
 				File appdata_folder = File.new_for_path (@"$appdata/socratest");
 				appdata_folder.make_directory ();
 			} catch (Error e) {
-				stdout.printf("Error: %s\n", e.message);
+				stdout.printf ("Error: %s\n", e.message);
 			}
 		}
 		database_location = @"$appdata/socratest/test_database.db";
+		bool database_exists = FileUtils.test (database_location, FileTest.EXISTS);
 
 		string errmsg;
 
@@ -69,6 +70,8 @@ public class TestDB {
 			Gtk.main_quit ();
 		}
 
+		if (!database_exists)
+			init_db ();
 	}
 
 	public Test[] get_all_tests () {
@@ -77,4 +80,49 @@ public class TestDB {
 		return all_tests;
 	}
 
+	private bool init_db () {
+		Statement stmt;
+		int rc = 0;
+		string errmsg;
+
+		string query = """
+		CREATE TABLE WordList (
+			id				INTEGER		PRIMARY KEY	AUTOINCREMENT,
+			word_list_text 	TEXT								NOT NULL,
+			name			TEXT								NOT NULL,
+			course			TEXT								NOT NULL,
+			year			INT									NOT NULL
+
+		);
+		""";
+
+		rc = db.exec (query, null, out errmsg);
+		if (rc != Sqlite.OK) {
+			stderr.printf ("Error: %s\n", errmsg);
+			return false;
+		}
+
+		return true;
+	}
+
+	private bool add_word_list (WordList word_list) {
+		Statement stmt;
+		int rc = 0;
+		string errmsg;
+
+		string word_list_text = word_list.get_text ();
+		string name = word_list.get_name ();
+		string course = word_list.get_course ();
+		int year = word_list.get_year ();
+
+		string query = @" INSERT INTO WordList (word_list_text, name, course, year) VALUES ('$word_list_text', '$name', '$course', $year);";
+
+		rc = db.exec (query, null, out errmsg);
+		if (rc != Sqlite.OK) {
+			stderr.printf ("Error: %s\n", errmsg);
+			return false;
+		}
+
+		return true;
+	}
 }

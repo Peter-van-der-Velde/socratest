@@ -25,12 +25,16 @@ public class WordList {
 
 	private ArrayList words;
 	private int year;
-	private int type;
+	private string name;
+	private string course;
+	private string text;
 
-	public WordList (string word_list, int year, int type) {
+	public WordList (string word_list, int year, string course, string name) {
 		words = parse_word_list (word_list);
 		this.year = year;
-		this.type = type;
+		this.course = course;
+		this.name = name;
+		this.text = word_list;
 	}
 
 	private ArrayList parse_word_list (string word_list) {
@@ -46,4 +50,22 @@ public class WordList {
 		}
 		return words;
 	}
+
+	public int get_year () {
+		return year;
+	}
+
+	public string get_course () {
+		return course;
+	}
+
+	public string get_name () {
+		return name;
+	}
+
+	public string get_text () {
+		return text;
+	}
+
+
 }
