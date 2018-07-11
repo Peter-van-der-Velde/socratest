@@ -45,6 +45,7 @@ public class Socratest.TestSettings : Gtk.Box {
 
 	public TestSettings (Stack main_stack) {
 		this.main_stack = main_stack;
+		// I manually set the text so it can easily be translated using po
 		order.set_text (_("Order:"));
 		type_label.set_text (_("Type of test:"));
 		repeat_label.set_text (_("Repeat until every anwser is correct"));

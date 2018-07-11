@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1 -->
 <interface>
-  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtk+" version="3.10"/>
   <template class="SocratestTestSettings" parent="GtkBox">
     <property name="can_focus">False</property>
     <property name="orientation">vertical</property>
@@ -143,7 +143,7 @@
     </child>
     <child>
       <object class="GtkButton" id="start_button">
-        <property name="label" translatable="yes">Start</property>
+        <property name="label" translatable="yes">start</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="has_focus">True</property>
