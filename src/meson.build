@@ -1,6 +1,7 @@
 vala_args = [
     '--gresources=' + meson.source_root() + '/data/com.gitlab.Peter_van_der_Velde.socratest.gresource.xml',
     '-g',
+    '--target-glib=2.38',
 ]
 
 vala_source = [
