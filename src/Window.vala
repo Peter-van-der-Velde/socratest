@@ -21,7 +21,7 @@
 using Gtk;
 
 [GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/main.ui")]
-public class Socratest.Window : Gtk.Window {
+public class Socratest.Window : Gtk.ApplicationWindow {
 
 	private string search_entry_text;
 	private Home home_view;

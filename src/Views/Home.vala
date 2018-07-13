@@ -40,12 +40,7 @@ public class Socratest.Home : Gtk.Box {
         this.word_lists = word_lists;
         word_lists = test_db.get_wordlists ();
 
-        Gtk.TreeIter iter;
-        test_list_store.append (out iter);
-        foreach (WordList word_list in word_lists) {
-        	test_list_store.set (iter, 0, word_list.get_id (), 1, word_list.get_course (), 2, word_list.get_name (), 3, word_list.get_year ());
-        }
-
+        update_test_list ();
 	}
 
 	[GtkCallback]
