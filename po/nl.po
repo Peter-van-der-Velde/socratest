@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.gitlab.Peter_van_der_Velde.socratest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-13 11:20+0200\n"
-"PO-Revision-Date: 2018-07-02 22:05+0200\n"
+"POT-Creation-Date: 2018-07-13 12:28+0200\n"
+"PO-Revision-Date: 2018-07-13 12:28+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -17,42 +17,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/Views/TestSettings.vala:52
-msgid "Order:"
-msgstr "Volgorde:"
-
-#: src/Views/TestSettings.vala:53
-msgid "Type of test:"
-msgstr "Soort van toets"
-
-#: src/Views/TestSettings.vala:54
-msgid "Repeat until every anwser is correct"
-msgstr "Herhaal tot elk antwoord correct is"
-
-#: src/Views/TestSettings.vala:58
-msgid "Both"
-msgstr "Beide"
-
-#: src/Views/TestSettings.vala:59
-msgid "Random"
-msgstr "Willekeurig"
-
-#: src/Views/TestSettings.vala:62
-msgid "Traditional"
-msgstr "Traditioneel"
-
-#: src/Views/TestSettings.vala:63
-msgid "A, B, C"
+#: src/views/AppView.vala:34
+msgid "Welcome"
 msgstr ""
 
-#: src/Views/TestSettings.vala:66
-msgid "Start"
-msgstr "Start"
-
-#: src/Views/TestView.vala:50
-msgid "Current Word:"
+#: src/views/AppView.vala:34
+msgid "Open up your editor to get started!"
 msgstr ""
 
-#: src/Views/TestView.vala:52
-msgid "Next"
-msgstr "Volgende"
+#: src/views/AppView.vala:35
+msgid "Visit Valadoc"
+msgstr ""
+
+#: src/views/AppView.vala:35
+msgid "The canonical source for Vala API references."
+msgstr ""
+
+#: src/views/AppView.vala:36
+msgid "Visit elementary.io"
+msgstr ""
+
+#: src/views/AppView.vala:36
+msgid "Read up on developing for elementary"
+msgstr ""
+
+#: src/widgets/HeaderBar.vala:44
+msgid "Settings"
+msgstr ""

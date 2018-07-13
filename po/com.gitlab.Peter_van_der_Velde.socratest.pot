@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.gitlab.Peter_van_der_Velde.socratest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-13 11:20+0200\n"
+"POT-Creation-Date: 2018-07-13 12:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,42 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/Views/TestSettings.vala:52
-msgid "Order:"
+#: src/views/AppView.vala:34
+msgid "Welcome"
 msgstr ""
 
-#: src/Views/TestSettings.vala:53
-msgid "Type of test:"
+#: src/views/AppView.vala:34
+msgid "Open up your editor to get started!"
 msgstr ""
 
-#: src/Views/TestSettings.vala:54
-msgid "Repeat until every anwser is correct"
+#: src/views/AppView.vala:35
+msgid "Visit Valadoc"
 msgstr ""
 
-#: src/Views/TestSettings.vala:58
-msgid "Both"
+#: src/views/AppView.vala:35
+msgid "The canonical source for Vala API references."
 msgstr ""
 
-#: src/Views/TestSettings.vala:59
-msgid "Random"
+#: src/views/AppView.vala:36
+msgid "Visit elementary.io"
 msgstr ""
 
-#: src/Views/TestSettings.vala:62
-msgid "Traditional"
+#: src/views/AppView.vala:36
+msgid "Read up on developing for elementary"
 msgstr ""
 
-#: src/Views/TestSettings.vala:63
-msgid "A, B, C"
-msgstr ""
-
-#: src/Views/TestSettings.vala:66
-msgid "Start"
-msgstr ""
-
-#: src/Views/TestView.vala:50
-msgid "Current Word:"
-msgstr ""
-
-#: src/Views/TestView.vala:52
-msgid "Next"
+#: src/widgets/HeaderBar.vala:44
+msgid "Settings"
 msgstr ""

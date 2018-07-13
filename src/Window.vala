@@ -1,65 +1,76 @@
 /*
-* Copyright (c) 2018 Peter van der Velde (https://vandervelde.cc)
+* Copyright (C) 2018  Peter van der Velde <petervandervelde2@gmail.com>
 *
-* This program is free software; you can redistribute it and/or
-* modify it under the terms of the GNU General Public
-* License as published by the Free Software Foundation; either
-* version 2 of the License, or (at your option) any later version.
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
 *
 * This program is distributed in the hope that it will be useful,
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-* General Public License for more details.
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
 *
-* You should have received a copy of the GNU General Public
-* License along with this program; if not, write to the
-* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-* Boston, MA 02110-1301 USA
-*
-* Authored by: Peter van der Velde <petervandervelde2@gmail.com>
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-using Gtk;
 
-[GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/main.ui")]
-public class Socratest.Window : Gtk.ApplicationWindow {
+using Socratest.Configs;
+using Socratest.Controllers;
+using Socratest.Views;
 
-	private string search_entry_text;
-	private Home home_view;
-	private TestView test_view;
-	private TestResults test_results;
-	private TestSettings test_settings;
-	private AddTest add_test;
+namespace Socratest {
 
-	private TestDB test_db;
-	private WordList[] word_lists;
+	/**
+	 * Class responsible for creating the u window and will contain contain other widgets.
+	 * allowing the user to manipulate the window (resize it, move it, close it, ...).
+	 *
+	 * @see Gtk.ApplicationWindow
+	 * @since 1.0.0
+	 */
+	public class Window : Gtk.ApplicationWindow {
 
-	[GtkChild]
-	private Button hd_home;
+		/**
+		 * Constructs a new {@code Window} object.
+		 *
+		 * @see Socratest.Configs.Constants
+		 * @see style_provider
+		 * @see build
+		 */
+		public Window (Gtk.Application app) {
+			Object (
+				application: app,
+				icon_name: Constants.APP_ICON,
+				resizable: true
+			);
 
-	[GtkChild]
-	private Stack main_stack;
 
-	public Window () {
-		this.set_default_size (600,300);
-		search_entry_text = "";
+			var settings = Socratest.Configs.Settings.get_instance ();
+			int x = settings.window_x;
+			int y = settings.window_y;
 
-		test_db = new TestDB ();
-		word_lists = test_db.get_wordlists ();
+			if (x != -1 && y != -1) {
+				move (x, y);
+			}
 
-		home_view = new Socratest.Home (main_stack, test_db, ref word_lists);
-		test_view = new Socratest.TestView (main_stack);
-		test_results = new Socratest.TestResults (main_stack);
-		test_settings = new Socratest.TestSettings (main_stack);
-		add_test = new Socratest.AddTest (main_stack);
+			var css_provider = new Gtk.CssProvider ();
+			css_provider.load_from_resource (Constants.URL_CSS);
 
-		main_stack.add_named (home_view, "Home View");
-		main_stack.add_named (test_view, "Test View");
-		main_stack.add_named (test_results, "TestResults View");
-		main_stack.add_named (test_settings, "TestSettings View");
-		main_stack.add_named (add_test, "AddTest View");
+			Gtk.StyleContext.add_provider_for_screen (
+				Gdk.Screen.get_default (),
+				css_provider,
+				Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+			);
 
-		hd_home.clicked.connect (() => {
-				main_stack.set_visible_child_name ("Home View");
-		});
+			// Save the window's position on close
+			delete_event.connect (() => {
+				int root_x, root_y;
+				get_position (out root_x, out root_y);
+
+				settings.window_x = root_x;
+				settings.window_y = root_y;
+				return false;
+			});
+		}
 	}
 }

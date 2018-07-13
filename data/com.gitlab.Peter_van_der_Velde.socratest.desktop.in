@@ -1,12 +1,10 @@
 [Desktop Entry]
 Name=Socratest
-GenericName=Word Learner App
-Comment=You can teach yourself words
-Categories=Utility;Education;
+Comment=Your new digital teacher!
+Icon=com.gitlab.Peter_van_der_Velde.socratest
 Exec=com.gitlab.Peter_van_der_Velde.socratest
-Icon=application-default-icon
 Terminal=false
-Type=Application
-X-GNOME-Gettext-Domain=socratest
-X-GNOME-UsesNotifications=true
-Keywords=words;learning;GTK;
+Type=Application;Education;
+StartupNotify=true
+Categories=GNOME;GTK;
+Keywords=app;vala;

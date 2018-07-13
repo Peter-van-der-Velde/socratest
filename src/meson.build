@@ -1,36 +1,25 @@
-vala_args = [
-    '--gresources=' + meson.source_root() + '/data/com.gitlab.Peter_van_der_Velde.socratest.gresource.xml',
-    '-g',
-    '--target-glib=2.38',
-]
+sources += files(
+    'configs/Constants.vala',
+    'configs/Settings.vala',
 
-vala_source = [
-    'Window.vala',
-    'Views/Home.vala',
-    'Views/TestView.vala',
-    'Views/TestSettings.vala',
-    'Views/TestResults.vala',
-    'Views/Welcome.vala',
-    'Views/AddTest.vala',
-    'Model/Word.vala',
-    'Model/WordList.vala',
-    'Model/Test.vala',
-    'Model/TestDB.vala',
-]
+    'model/Test.vala',
+    'model/TestDB.vala',
+    'model/Word.vala',
+    'model/WordList.vala',
 
-executable(
-	meson.project_name(),
+    'controllers/AppController.vala',
+
+    'views/AppView.vala',
+    'views/AddTest.vala',
+    'views/TestResults.vala',
+    'views/TestView.vala',
+    'views/Home.vala',
+    'views/TestSettings.vala',
+    'views/Welcome.vala',
+
+    'widgets/HeaderBar.vala',
+
     'Application.vala',
-    vala_source,
-    resources,
-    vala_args : vala_args,
-    dependencies: [
-        core_deps,
-        dependency('gtk+-3.0'),
-        dependency('granite'),
-        dependency('gee-0.8'),
-        dependency('sqlite3'),
-        dependency('gio-2.0'),
-    ],
-    install : true
+    'Main.vala',
+    'Window.vala'
 )
