@@ -25,6 +25,7 @@ public class Socratest.Home : Gtk.Box {
 
 	private string search_entry_text;
 	private Stack main_stack;
+	private WordList[] word_lists;
 
 	[GtkChild]
 	private Gtk.ListStore test_list_store;
@@ -32,9 +33,19 @@ public class Socratest.Home : Gtk.Box {
 	[GtkChild]
 	private TreeView test_tree;
 
-	public Home (Stack main_stack) {
+	public Home (Stack main_stack, TestDB test_db, ref WordList[] word_lists) {
 		this.main_stack = main_stack;
 		search_entry_text = "";
+
+        this.word_lists = word_lists;
+        word_lists = test_db.get_wordlists ();
+
+        Gtk.TreeIter iter;
+        test_list_store.append (out iter);
+        foreach (WordList word_list in word_lists) {
+        	test_list_store.set (iter, 0, word_list.get_id (), 1, word_list.get_course (), 2, word_list.get_name (), 3, word_list.get_year ());
+        }
+
 	}
 
 	[GtkCallback]
@@ -71,4 +82,15 @@ public class Socratest.Home : Gtk.Box {
 		stdout.printf ("clicked on the remove button\n");
 	}
 
+	private void update_test_list () {
+		Gtk.ListStore new_test_list_store = test_list_store;
+
+		new_test_list_store.clear ();
+		Gtk.TreeIter iter;
+        test_list_store.append (out iter);
+        foreach (WordList word_list in word_lists) {
+        	test_list_store.set (iter, 0, word_list.get_id (), 1, word_list.get_course (), 2, word_list.get_name (), 3, word_list.get_year ());
+        }
+        test_list_store = new_test_list_store;
+	}
 }

@@ -23,18 +23,20 @@ using Gee;
 
 public class WordList {
 
+	private int id;
 	private ArrayList words;
 	private int year;
 	private string name;
 	private string course;
 	private string text;
 
-	public WordList (string word_list, int year, string course, string name) {
+	public WordList (string word_list, int year, string course, string name, int id) {
 		words = parse_word_list (word_list);
 		this.year = year;
 		this.course = course;
 		this.name = name;
 		this.text = word_list;
+		this.id = id;
 	}
 
 	private ArrayList parse_word_list (string word_list) {
@@ -67,5 +69,8 @@ public class WordList {
 		return text;
 	}
 
+	public int get_id () {
+		return id;
+	}
 
 }

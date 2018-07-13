@@ -24,9 +24,9 @@ using Sqlite;
 public class TestDB {
 
 	private Sqlite.Database db;
-	private string database_location;
 
 	public TestDB () {
+		string database_location;
 
 		#if W32
 		// get the data W32 filelocations
@@ -72,13 +72,10 @@ public class TestDB {
 
 		if (!database_exists)
 			init_db ();
+
+		get_wordlists ();
 	}
 
-	public Test[] get_all_tests () {
-		Test[] all_tests = new Test[0];
-
-		return all_tests;
-	}
 
 	private bool init_db () {
 		Statement stmt;
@@ -105,7 +102,7 @@ public class TestDB {
 		return true;
 	}
 
-	private bool add_word_list (WordList word_list) {
+	public bool add_word_list (WordList word_list) {
 		Statement stmt;
 		int rc = 0;
 		string errmsg;
@@ -125,4 +122,59 @@ public class TestDB {
 
 		return true;
 	}
+
+	public WordList[] get_wordlists () {
+		Sqlite.Statement stmt;
+		int rc;
+		ArrayList<WordList> all_wordlists = new ArrayList<WordList> ();
+
+		const string prepared_query_str = "SELECT * FROM WordList;";
+
+		rc = db.prepare_v2 (prepared_query_str, prepared_query_str.length, out stmt);
+		if (rc != Sqlite.OK) {
+			stderr.printf ("Error: %d: %s\n", db.errcode (), db.errmsg ());
+			return null;
+		}
+
+		int cols = stmt.column_count ();
+		while (stmt.step () == Sqlite.ROW) {
+
+			string word_list_text = "";
+			string name = "";
+			string course = "";
+			int year = 0;
+			int id = 0;
+
+			for (int i = 0; i < cols; i++) {
+				int type_id = stmt.column_type (i);
+
+				switch (stmt.column_name (i)) {
+					case "word_list_text":
+						word_list_text = stmt.column_text (i) ?? "";
+						break;
+
+					case "year":
+						string val = stmt.column_text (i) ?? "";
+						year = int.parse (val);
+						break;
+
+					case "course":
+						course = stmt.column_text (i) ?? "";
+						break;
+
+					case "name":
+						name = stmt.column_text (i) ?? "";
+						break;
+
+					case "id":
+						string val = stmt.column_text (i) ?? "";
+						id = int.parse (val);
+						break;
+				}
+			}
+			all_wordlists.add (new WordList (word_list_text, year, course, name, id));
+		}
+		return all_wordlists.to_array ();
+	}
+
 }
