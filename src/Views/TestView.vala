@@ -40,6 +40,8 @@ public class Socratest.TestView : Gtk.Box {
 	[GtkChild]
 	private Label current_word_of;
 
+	[GtkChild]
+	private Button next_button;
 
 
 	public TestView (Stack main_stack) {
@@ -47,6 +49,7 @@ public class Socratest.TestView : Gtk.Box {
 
 		cw_label.set_text (_("Current Word:"));
 		feedback.set_text ("");
+		next_button.set_label (_("Next"));
 	}
 
 	[GtkCallback]

@@ -43,6 +43,9 @@ public class Socratest.TestSettings : Gtk.Box {
 	[GtkChild]
 	private Label repeat_label;
 
+	[GtkChild]
+	private Button start_button;
+
 	public TestSettings (Stack main_stack) {
 		this.main_stack = main_stack;
 		// I manually set the text so it can easily be translated using po
@@ -59,6 +62,8 @@ public class Socratest.TestSettings : Gtk.Box {
 		type_of_test_combobox.append ("trad", _("Traditional"));
 		type_of_test_combobox.append ("abc", _("A, B, C"));
 		type_of_test_combobox.active = 0;
+
+		start_button.set_label (_("Start"));
 	}
 
 	[GtkCallback]

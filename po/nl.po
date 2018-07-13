@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.gitlab.Peter_van_der_Velde.socratest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-09 19:32+0200\n"
+"POT-Creation-Date: 2018-07-13 11:20+0200\n"
 "PO-Revision-Date: 2018-07-02 22:05+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,34 +17,42 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/Views/TestSettings.vala:45
+#: src/Views/TestSettings.vala:52
 msgid "Order:"
 msgstr "Volgorde:"
 
-#: src/Views/TestSettings.vala:46
+#: src/Views/TestSettings.vala:53
 msgid "Type of test:"
-msgstr ""
+msgstr "Soort van toets"
 
-#: src/Views/TestSettings.vala:47
+#: src/Views/TestSettings.vala:54
 msgid "Repeat until every anwser is correct"
-msgstr ""
+msgstr "Herhaal tot elk antwoord correct is"
 
-#: src/Views/TestSettings.vala:51
+#: src/Views/TestSettings.vala:58
 msgid "Both"
-msgstr ""
+msgstr "Beide"
 
-#: src/Views/TestSettings.vala:52
+#: src/Views/TestSettings.vala:59
 msgid "Random"
-msgstr ""
+msgstr "Willekeurig"
 
-#: src/Views/TestSettings.vala:55
+#: src/Views/TestSettings.vala:62
 msgid "Traditional"
-msgstr ""
+msgstr "Traditioneel"
 
-#: src/Views/TestSettings.vala:56
+#: src/Views/TestSettings.vala:63
 msgid "A, B, C"
 msgstr ""
 
-#: src/Views/TestView.vala:46
+#: src/Views/TestSettings.vala:66
+msgid "Start"
+msgstr "Start"
+
+#: src/Views/TestView.vala:50
 msgid "Current Word:"
 msgstr ""
+
+#: src/Views/TestView.vala:52
+msgid "Next"
+msgstr "Volgende"

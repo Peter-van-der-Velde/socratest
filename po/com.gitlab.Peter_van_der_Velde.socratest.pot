@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.gitlab.Peter_van_der_Velde.socratest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-09 19:32+0200\n"
+"POT-Creation-Date: 2018-07-13 11:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,34 +17,42 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/Views/TestSettings.vala:45
+#: src/Views/TestSettings.vala:52
 msgid "Order:"
 msgstr ""
 
-#: src/Views/TestSettings.vala:46
+#: src/Views/TestSettings.vala:53
 msgid "Type of test:"
 msgstr ""
 
-#: src/Views/TestSettings.vala:47
+#: src/Views/TestSettings.vala:54
 msgid "Repeat until every anwser is correct"
 msgstr ""
 
-#: src/Views/TestSettings.vala:51
+#: src/Views/TestSettings.vala:58
 msgid "Both"
 msgstr ""
 
-#: src/Views/TestSettings.vala:52
+#: src/Views/TestSettings.vala:59
 msgid "Random"
 msgstr ""
 
-#: src/Views/TestSettings.vala:55
+#: src/Views/TestSettings.vala:62
 msgid "Traditional"
 msgstr ""
 
-#: src/Views/TestSettings.vala:56
+#: src/Views/TestSettings.vala:63
 msgid "A, B, C"
 msgstr ""
 
-#: src/Views/TestView.vala:46
+#: src/Views/TestSettings.vala:66
+msgid "Start"
+msgstr ""
+
+#: src/Views/TestView.vala:50
 msgid "Current Word:"
+msgstr ""
+
+#: src/Views/TestView.vala:52
+msgid "Next"
 msgstr ""

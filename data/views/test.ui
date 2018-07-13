@@ -113,7 +113,7 @@ consectetur adipiscing elit.
         </child>
         <child>
           <object class="GtkButton" id="next_button">
-            <property name="label" translatable="yes">next</property>
+            <property name="label" translatable="yes">Next</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
