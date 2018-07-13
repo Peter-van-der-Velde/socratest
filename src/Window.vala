@@ -24,11 +24,14 @@ using Gtk;
 public class Socratest.Window : Gtk.Window {
 
 	private string search_entry_text;
-	private Socratest.Home home_view;
-	private Socratest.TestView test_view;
-	private Socratest.TestResults test_results;
-	private Socratest.TestSettings test_settings;
-	private Socratest.AddTest add_test;
+	private Home home_view;
+	private TestView test_view;
+	private TestResults test_results;
+	private TestSettings test_settings;
+	private AddTest add_test;
+
+	private TestDB test_db;
+	private WordList[] word_lists;
 
 	[GtkChild]
 	private Button hd_home;
@@ -39,9 +42,11 @@ public class Socratest.Window : Gtk.Window {
 	public Window () {
 		this.set_default_size (600,300);
 		search_entry_text = "";
-		TestDB test_db = new TestDB ();
 
-		home_view = new Socratest.Home (main_stack);
+		test_db = new TestDB ();
+		word_lists = test_db.get_wordlists ();
+
+		home_view = new Socratest.Home (main_stack, test_db, ref word_lists);
 		test_view = new Socratest.TestView (main_stack);
 		test_results = new Socratest.TestResults (main_stack);
 		test_settings = new Socratest.TestSettings (main_stack);
