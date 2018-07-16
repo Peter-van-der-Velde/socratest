@@ -28,7 +28,7 @@ namespace Socratest.Controllers {
 	public class AppController {
 
 		private Gtk.Application            	application;
-		private AppView                    	app_view;
+		private Welcome                    	welcome_view;
 		private Home 						home_view;
 		private TestView 					test_view;
 		private TestResults 				test_results;
@@ -48,7 +48,8 @@ namespace Socratest.Controllers {
 			this.window = new Window (this.application);
 			this.headerbar = new HeaderBar ();
 			this.main_stack = new Gtk.Stack ();
-			this.app_view = new AppView ();
+			this.welcome_view = new Welcome ();
+			this.test_db = new TestDB ();
 
 			this.home_view = new Socratest.Home (main_stack, test_db, ref word_lists);
 			this.test_view = new Socratest.TestView (main_stack);
@@ -56,7 +57,7 @@ namespace Socratest.Controllers {
 			this.test_settings = new Socratest.TestSettings (main_stack);
 			this.add_test = new Socratest.AddTest (main_stack);
 
-			this.main_stack.add_named (app_view, "App View");
+			this.main_stack.add_named (welcome_view, "App View");
 			this.main_stack.add_named (home_view, "Home View");
 			this.main_stack.add_named (test_view, "Test View");
 			this.main_stack.add_named (test_results, "TestResults View");
@@ -72,7 +73,7 @@ namespace Socratest.Controllers {
 
 		public void activate () {
 			window.show_all ();
-			app_view.activate ();
+			welcome_view.activate ();
 		}
 
 		public void quit () {

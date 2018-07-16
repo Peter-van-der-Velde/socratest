@@ -9,7 +9,6 @@ sources += files(
 
     'controllers/AppController.vala',
 
-    'views/AppView.vala',
     'views/AddTest.vala',
     'views/TestResults.vala',
     'views/TestView.vala',

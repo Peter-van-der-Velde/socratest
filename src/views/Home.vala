@@ -45,7 +45,7 @@ public class Socratest.Home : Gtk.Box {
 
 	[GtkCallback]
 	private void search_entry_changed (Editable search_entry) {
-		search_entry_text = ((SearchEntry)search_entry).get_text();
+		search_entry_text = ((SearchEntry)search_entry).get_text ();
 		stdout.printf ("wrote \"%s\" in the search entry\n", search_entry_text);
 	}
 

@@ -28,7 +28,7 @@ public class TestDB {
 	public TestDB () {
 		string database_location;
 
-		#if W32
+		#if _WIN32
 		// get the data W32 filelocations
 		string appdata = GLib.Environment.get_variable ("APPDATA");
 
