@@ -7,11 +7,21 @@
             <summary>Most recent x position of Socratest</summary>
             <description>Most recent x position of Socratest</description>
         </key>
-    
+
         <key name="window-y" type="i">
             <default>-1</default>
             <summary>Most recent y position of Socratest</summary>
             <description>Most recent y position of Socratest</description>
+        </key>
+        <key name="window-width" type="i">
+            <default>-1</default>
+            <summary>Most recent width of Socratest</summary>
+            <description>Most recent width of Socratest</description>
+        </key>
+        <key name="window-heigth" type="i">
+            <default>-1</default>
+            <summary>Most recent heigth of Socratest</summary>
+            <description>Most recent heigth of Socratest</description>
         </key>
     </schema>
 

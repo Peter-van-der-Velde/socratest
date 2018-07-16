@@ -48,10 +48,10 @@ namespace Socratest.Controllers {
 			this.window = new Window (this.application);
 			this.headerbar = new HeaderBar ();
 			this.main_stack = new Gtk.Stack ();
-			this.welcome_view = new Welcome ();
 			this.test_db = new TestDB ();
 			this.word_lists = test_db.get_wordlists ();
 
+			this.welcome_view = new Welcome (main_stack, test_db);
 			this.home_view = new Socratest.Home (main_stack, test_db, ref word_lists);
 			this.test_view = new Socratest.TestView (main_stack);
 			this.test_results = new Socratest.TestResults (main_stack);

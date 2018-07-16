@@ -53,6 +53,13 @@ namespace Socratest {
 				move (x, y);
 			}
 
+			int width = settings.window_width;
+			int heigth = settings.window_heigth;
+
+			if (width != -1 && heigth != -1) {
+				resize (settings.window_width, settings.window_heigth);
+			}
+
 			var css_provider = new Gtk.CssProvider ();
 			css_provider.load_from_resource (Constants.URL_CSS);
 
@@ -65,10 +72,16 @@ namespace Socratest {
 			// Save the window's position on close
 			delete_event.connect (() => {
 				int root_x, root_y;
+				int root_width, root_heigth;
+
 				get_position (out root_x, out root_y);
+				get_size (out root_width, out root_heigth);
 
 				settings.window_x = root_x;
 				settings.window_y = root_y;
+				settings.window_width = root_width;
+				settings.window_heigth = root_heigth;
+
 				return false;
 			});
 		}

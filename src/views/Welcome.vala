@@ -14,12 +14,14 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
+using Gtk;
 using Socratest.Configs;
 using Socratest.Widgets;
 
 namespace Socratest.Views {
 
+    private string search_entry_text;
+    private Stack main_stack;
     /**
      * The {@code AppView} class.
      *
@@ -30,7 +32,7 @@ namespace Socratest.Views {
         /**
          * Constructs a new {@code AppView} object.
          */
-        public Welcome () {
+        public Welcome (Stack main_stack, TestDB test_db) {
             var welcome_view = new Granite.Widgets.Welcome (_("Welcome"), _("Open up your editor to get started!"));
             welcome_view.append ("text-x-vala", _("Visit Valadoc"), _("The canonical source for Vala API references."));
             welcome_view.append ("distributor-logo", _("Visit elementary.io"), _("Read up on developing for elementary"));

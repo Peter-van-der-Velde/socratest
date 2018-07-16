@@ -29,6 +29,11 @@ public class Test {
 	private int year;
 	private string course;
 
+	/**
+	 * The {@code Test} class.
+	 *
+	 * @since 1.0.0
+	 */
 	public Test (string word_list, string name, int year, string course, int test_type, int order, int id) {
 		this.word_list = new WordList (word_list, year, course, name, id);
 		this.test_type = test_type;
