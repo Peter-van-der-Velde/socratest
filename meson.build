@@ -24,11 +24,13 @@ configure_file(output: 'config.h', configuration: conf)
 config_h_dir = include_directories('.')
 
 c_args = [
-  '-include', 'config.h'
+  '-include', 'config.h',
+  '-g'
 ]
 
 vala_args = [
 	'--target-glib=2.38',
+	'--debug',
 ]
 
 sources = files()

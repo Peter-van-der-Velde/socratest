@@ -38,8 +38,6 @@ public class Socratest.Home : Gtk.Box {
 		search_entry_text = "";
 
         this.word_lists = word_lists;
-        word_lists = test_db.get_wordlists ();
-
         update_test_list ();
 	}
 

@@ -54,6 +54,7 @@ namespace Socratest {
 		 */
 		public override void activate () {
 			if (controller == null) {
+				stdout.printf("[DBG] new app\n");
 				controller = new AppController (this);
 			}
 

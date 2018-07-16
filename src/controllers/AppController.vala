@@ -50,6 +50,7 @@ namespace Socratest.Controllers {
 			this.main_stack = new Gtk.Stack ();
 			this.welcome_view = new Welcome ();
 			this.test_db = new TestDB ();
+			this.word_lists = test_db.get_wordlists ();
 
 			this.home_view = new Socratest.Home (main_stack, test_db, ref word_lists);
 			this.test_view = new Socratest.TestView (main_stack);
@@ -57,12 +58,12 @@ namespace Socratest.Controllers {
 			this.test_settings = new Socratest.TestSettings (main_stack);
 			this.add_test = new Socratest.AddTest (main_stack);
 
-			this.main_stack.add_named (welcome_view, "App View");
 			this.main_stack.add_named (home_view, "Home View");
 			this.main_stack.add_named (test_view, "Test View");
 			this.main_stack.add_named (test_results, "TestResults View");
 			this.main_stack.add_named (test_settings, "TestSettings View");
 			this.main_stack.add_named (add_test, "AddTest View");
+			this.main_stack.add_named (welcome_view, "Welcome View");
 
 			this.window.add (this.main_stack);
 			this.window.set_default_size (800, 640);
@@ -73,7 +74,14 @@ namespace Socratest.Controllers {
 
 		public void activate () {
 			window.show_all ();
-			welcome_view.activate ();
+
+			// if there are already any wordlist show the home view instead of the welcome view
+			if (word_lists.length > 0) {
+				this.main_stack.set_visible_child_name ("Home View");
+			} else {
+				this.main_stack.set_visible_child_name ("Welcome View");
+				welcome_view.activate ();
+			}
 		}
 
 		public void quit () {
