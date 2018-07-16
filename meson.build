@@ -27,6 +27,10 @@ c_args = [
   '-include', 'config.h'
 ]
 
+vala_args = [
+	'--target-glib=2.38',
+]
+
 sources = files()
 
 subdir('data')
@@ -46,6 +50,7 @@ dependencies = [
 e = executable('com.gitlab.Peter_van_der_Velde.socratest',
 	sources,
 	gresource,
+	vala_args:vala_args,
 	c_args: c_args,
 	dependencies: dependencies,
 	install : true
