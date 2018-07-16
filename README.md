@@ -1,7 +1,7 @@
 <div align="center">
-  <span align="center"> <img width="80" height="70" class="center" src="gitlab.com/Peter_van_der_Velde/socratest/blob/master/data/images/com.gitlab.Peter_van_der_Velde.socratest.png" alt="Icon"></span>
+  <span align="center"> <img width="80" height="70" class="center" src="https://gitlab.com/Peter_van_der_Velde/socratest/blob/master/data/images/com.gitlab.Peter_van_der_Velde.socratest.png" alt="Icon"></span>
   <h1 align="center">Socratest</h1>
-  <h3 align="center">Your new digital teacher!</h3>
+  <h3 align="center">Your new personal digital teacher!</h3>
 </div>
 
 <br/>
@@ -13,17 +13,17 @@
 </p>
 
 <p align="center">
-  <a href="gitlab.com/Peter_van_der_Velde/socratest/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/License-GPL-3.0-blue.svg">
+  <a href="https://gitlab.com/Peter_van_der_Velde/socratest/blob/master/LICENSE.md">
+  <img src="https://img.shields.io/badge/License-GPL--3.0-blue.svg">
   </a>
-  <a href="gitlab.com/Peter_van_der_Velde/socratest/releases">
+  <a href="https://gitlab.com/Peter_van_der_Velde/socratest/releases">
     <img src="https://img.shields.io/badge/Release-v%201.0.0-orange.svg">
   </a>
 </p>
 
 <p align="center">
-    <img  src="gitlab.com/Peter_van_der_Velde/socratest/blob/master/data/images/screenshot.png" alt="Screenshot"> <br>
-  <a href="gitlab.com/Peter_van_der_Velde/socratest/issues/new"> Report a problem! </a>
+    <img  src="https://gitlab.com/Peter_van_der_Velde/socratest/blob/master/data/images/screenshot.png" alt="Screenshot"> <br>
+  <a href="https://gitlab.com/Peter_van_der_Velde/socratest/issues/new"> Report a problem! </a>
 </p>
 
 ## Installation
@@ -36,14 +36,15 @@ These dependencies must be present before building:
  - `libgranite-dev`
  - `libgtk-3-dev`
  - `libsqlite-3-dev`
- - `libgee-0.8-dev`
+
 
 Use the App script to simplify installation by running `./app install-deps`
-
+ 
  ### Building
 
-```
-git clone gitlab.com/Peter_van_der_Velde/socratest.git com.gitlab.Peter_van_der_Velde.socratest && cd com.gitlab.Peter_van_der_Velde.socratest
+```bash
+git clone https://gitlab.com/Peter_van_der_Velde/socratest.git com.gitlab.Peter_van_der_Velde.socratest && cd com.gitlab.Peter_van_der_Velde.socratest
+#./app install-deps works only on ubuntu based systems
 ./app install-deps && ./app install
 ```
 
@@ -76,13 +77,13 @@ Options:
 
 To help, access the links below:
 
-- [Guide on Code Style](gitlab.com/Peter_van_der_Velde/socratest/wiki/Guide-on-code-style)
+- [Guide on Code Style](https://gitlab.com/Peter_van_der_Velde/socratest/wiki/Guide-on-code-style)
 
-- [Proposing Design Changes](gitlab.com/Peter_van_der_Velde/socratest/wiki/Proposing-Design-Changes)
+- [Proposing Design Changes](https://gitlab.com/Peter_van_der_Velde/socratest/wiki/Proposing-Design-Changes)
 
-- [Reporting Bugs](gitlab.com/Peter_van_der_Velde/socratest/wiki/Reporting-Bugs)
+- [Reporting Bugs](https://gitlab.com/Peter_van_der_Velde/socratest/wiki/Reporting-Bugs)
 
-- [Translate](gitlab.com/Peter_van_der_Velde/socratest/wiki/Translate)
+- [Translate](https://gitlab.com/Peter_van_der_Velde/socratest/wiki/Translate)
 
 
 ### License
