@@ -13,8 +13,7 @@
 </p>
 
 <p align="center">
-  <a href="https://gitlab.com/Peter_van_der_Velde/socratest/blob/master/LICENSE.md">
-    <img src="https://img.shields.io/badge/License-GPL-3.0-blue.svg">
+	[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://gitlab.com/Peter_van_der_Velde/socratest/blob/master/LICENSE.md)
   </a>
   <a href="https://gitlab.com/Peter_van_der_Velde/socratest/releases">
     <img src="https://img.shields.io/badge/Release-v%201.0.0-orange.svg">
