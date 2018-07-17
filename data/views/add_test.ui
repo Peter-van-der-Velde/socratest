@@ -189,6 +189,7 @@ Word 2 = Anwser 2</property>
                     <property name="name">word_list_text_view</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="vexpand">True</property>
                     <property name="buffer">wl_buffer</property>
                   </object>
                 </child>
