@@ -20,30 +20,46 @@ using Socratest.Widgets;
 
 namespace Socratest.Views {
 
-    private string search_entry_text;
-    private Stack main_stack;
-    /**
-     * The {@code AppView} class.
-     *
-     * @since 1.0.0
-     */
-    public class Welcome : Gtk.Box {
 
-        /**
-         * Constructs a new {@code AppView} object.
-         */
-        public Welcome (Stack main_stack, TestDB test_db) {
-            var welcome_view = new Granite.Widgets.Welcome (_("Welcome to Socratest"), _("It seems that there aren't any tests yet."));
-            welcome_view.append ("document-new", _("New Wordlist"), _("Create a new wordlist."));
-            welcome_view.activated.connect ((index) => {
-                try {
-                    stdout.printf ("[TODO] new wordlist");
-                } catch (Error e) {
-                    warning (e.message);
-                }
-            });
+	/**
+	 * The {@code AppView} class.
+	 *
+	 * @since 1.0.0
+	 */
+	public class Welcome : Gtk.Box {
 
-            this.add (welcome_view);
-        }
-    }
+		private string search_entry_text;
+		private Stack main_stack;
+		/**
+		 * Constructs a new {@code AppView} object.
+		 */
+		public Welcome (Gtk.Window parent, Gtk.Stack main_stack) {
+			var welcome_view = new Granite.Widgets.Welcome (_("Welcome to Socratest"), _("It seems that there aren't any wordlists yet."));
+			welcome_view.append ("document-new", _("New Wordlist"), _("Create a new wordlist."));
+
+			this.main_stack = main_stack;
+
+			welcome_view.activated.connect ((index) => {
+				try {
+					AddTestDialog add_test_dialog = new AddTestDialog (parent);
+					add_test_dialog.show_all ();
+
+
+					WordList[] word_lists;
+
+					TestDB test_db = new TestDB ();
+					word_lists = test_db.get_wordlists ();
+
+					if (word_lists.length > 0) {
+						this.main_stack.set_visible_child_name ("Home View");
+						Home home = ((Home) main_stack.get_child_by_name ("Home View"));
+					}
+				} catch (Error e) {
+					warning (e.message);
+				}
+			});
+
+			this.add (welcome_view);
+		}
+	}
 }

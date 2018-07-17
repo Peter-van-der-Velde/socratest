@@ -33,7 +33,6 @@ namespace Socratest.Controllers {
 		private TestView 					test_view;
 		private TestResults 				test_results;
 		private TestSettings 				test_settings;
-		private AddTest 					add_test;
 		private Gtk.HeaderBar              	headerbar;
 		private Gtk.ApplicationWindow      	window { get; private set; default = null; }
 		private Gtk.Stack					main_stack;
@@ -51,18 +50,17 @@ namespace Socratest.Controllers {
 			this.test_db = new TestDB ();
 			this.word_lists = test_db.get_wordlists ();
 
-			this.welcome_view = new Welcome (main_stack, test_db);
-			this.home_view = new Socratest.Home (main_stack, test_db, ref word_lists);
-			this.test_view = new Socratest.TestView (main_stack);
-			this.test_results = new Socratest.TestResults (main_stack);
-			this.test_settings = new Socratest.TestSettings (main_stack);
-			this.add_test = new Socratest.AddTest (main_stack);
+			this.welcome_view = new Welcome (this.window, main_stack);
+			this.home_view = new Home (main_stack, test_db, ref word_lists);
+			this.test_view = new TestView (main_stack);
+			this.test_results = new TestResults (main_stack);
+			this.test_settings = new TestSettings (main_stack);
+
 
 			this.main_stack.add_named (home_view, "Home View");
 			this.main_stack.add_named (test_view, "Test View");
 			this.main_stack.add_named (test_results, "TestResults View");
 			this.main_stack.add_named (test_settings, "TestSettings View");
-			this.main_stack.add_named (add_test, "AddTest View");
 			this.main_stack.add_named (welcome_view, "Welcome View");
 
 			this.window.add (this.main_stack);

@@ -9,13 +9,13 @@ sources += files(
 
     'controllers/AppController.vala',
 
-    'views/AddTest.vala',
     'views/TestResults.vala',
     'views/TestView.vala',
     'views/Home.vala',
     'views/TestSettings.vala',
     'views/Welcome.vala',
 
+    'widgets/AddTestDialog.vala',
     'widgets/HeaderBar.vala',
 
     'Application.vala',
