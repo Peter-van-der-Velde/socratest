@@ -9,6 +9,8 @@ Word 2 = Anwser 2</property>
   <template class="SocratestWidgetsAddTestDialog" parent="GtkDialog">
     <property name="can_focus">False</property>
     <property name="resizable">False</property>
+    <property name="default_width">400</property>
+    <property name="default_height">400</property>
     <property name="type_hint">dialog</property>
     <property name="deletable">False</property>
     <child>
@@ -72,6 +74,7 @@ Word 2 = Anwser 2</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="margin_right">6</property>
+                <property name="margin_bottom">6</property>
                 <property name="label" translatable="yes">Wordlist Name:</property>
               </object>
               <packing>
@@ -85,6 +88,7 @@ Word 2 = Anwser 2</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="margin_right">6</property>
+                <property name="margin_bottom">6</property>
                 <property name="label" translatable="yes">Course:</property>
               </object>
               <packing>
@@ -110,6 +114,7 @@ Word 2 = Anwser 2</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="margin_left">6</property>
+                <property name="margin_bottom">6</property>
                 <property name="text" translatable="yes">New Wordlist</property>
                 <signal name="changed" handler="changed_entries" swapped="no"/>
               </object>
@@ -123,7 +128,7 @@ Word 2 = Anwser 2</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="margin_left">6</property>
-                <property name="margin_right">6</property>
+                <property name="margin_bottom">6</property>
                 <property name="placeholder_text" translatable="yes">English</property>
                 <signal name="changed" handler="changed_entries" swapped="no"/>
               </object>
@@ -136,6 +141,7 @@ Word 2 = Anwser 2</property>
               <object class="GtkEntry" id="year_entry">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="margin_left">6</property>
                 <property name="input_purpose">number</property>
                 <signal name="changed" handler="changed_entries" swapped="no"/>
               </object>
