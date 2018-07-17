@@ -33,27 +33,13 @@ namespace Socratest.Views {
          * Constructs a new {@code AppView} object.
          */
         public Welcome (Stack main_stack, TestDB test_db) {
-            var welcome_view = new Granite.Widgets.Welcome (_("Welcome"), _("Open up your editor to get started!"));
-            welcome_view.append ("text-x-vala", _("Visit Valadoc"), _("The canonical source for Vala API references."));
-            welcome_view.append ("distributor-logo", _("Visit elementary.io"), _("Read up on developing for elementary"));
+            var welcome_view = new Granite.Widgets.Welcome (_("Welcome to Socratest"), _("It seems that there aren't any tests yet."));
+            welcome_view.append ("document-new", _("New Wordlist"), _("Create a new wordlist."));
             welcome_view.activated.connect ((index) => {
-                switch (index) {
-                    case 0:
-                        try {
-                            AppInfo.launch_default_for_uri ("https://valadoc.org/", null);
-                        } catch (Error e) {
-                            warning (e.message);
-                        }
-
-                        break;
-                    case 1:
-                        try {
-                            AppInfo.launch_default_for_uri ("https://developer.elementary.io", null);
-                        } catch (Error e) {
-                            warning (e.message);
-                        }
-
-                        break;
+                try {
+                    stdout.printf ("[TODO] new wordlist");
+                } catch (Error e) {
+                    warning (e.message);
                 }
             });
 
