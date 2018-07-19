@@ -19,71 +19,79 @@
 * Authored by: Peter van der Velde <petervandervelde2@gmail.com>
 */
 using Gtk;
+using Socratest.Widgets;
 
-[GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/home.ui")]
-public class Socratest.Home : Gtk.Box {
+namespace Socratest.Views {
 
-	private string search_entry_text;
-	private Stack main_stack;
-	private WordList[] word_lists;
 
-	[GtkChild]
-	private Gtk.ListStore test_list_store;
+	/**
+	 * The {@code Home} class.
+	 *
+	 * @since 1.0.0
+	 */
 
-	[GtkChild]
-	private TreeView test_tree;
+	[GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/home.ui")]
+	public class Home : Gtk.Box {
 
-	public Home (Stack main_stack, TestDB test_db, ref WordList[] word_lists) {
-		this.main_stack = main_stack;
-		search_entry_text = "";
+		private Socratest.Application application;
+		private string search_entry_text;
+		private weak Stack main_stack;
+		private WordList[] word_lists;
 
-        this.word_lists = word_lists;
-        update_test_list ();
-	}
+		[GtkChild]
+		private Gtk.ListStore test_list_store;
 
-	[GtkCallback]
-	private void search_entry_changed (Editable search_entry) {
-		search_entry_text = ((SearchEntry)search_entry).get_text ();
-		stdout.printf ("wrote \"%s\" in the search entry\n", search_entry_text);
-	}
+		[GtkChild]
+		private TreeView test_tree;
 
-	[GtkCallback]
-	private void play_button_clicked (Button button) {
-		stdout.printf ("clicked on the play button\n");
-		main_stack.set_visible_child_name ("TestSettings View");
-	}
+		public Home (Socratest.Application application) {
+			this.application = application;
+			this.main_stack = this.application.controller.main_stack;
+			search_entry_text = "";
 
-	[GtkCallback]
-	private void add_button_clicked (Button button) {
-		stdout.printf ("clicked on the add button\n");
-		main_stack.set_visible_child_name ("AddTest View");
+	        this.word_lists = this.application.controller.test_db.get_wordlists ();
+	        update_test_list ();
+		}
 
-		// test code
-		int id = 0;
-		Gtk.TreeIter iter;
-        test_list_store.append (out iter);
-        test_list_store.set (iter, 0, id, 1,"English", 2, "test", 3, 2);
-	}
+		[GtkCallback]
+		private void search_entry_changed (Editable search_entry) {
+			search_entry_text = ((SearchEntry)search_entry).get_text ();
+			stdout.printf ("wrote \"%s\" in the search entry\n", search_entry_text);
+		}
 
-	[GtkCallback]
-	private void edit_button_clicked (Button button) {
-		stdout.printf ("clicked on the edit button\n");
-	}
+		[GtkCallback]
+		private void play_button_clicked (Button button) {
+			stdout.printf ("clicked on the play button\n");
+			main_stack.set_visible_child_name ("TestSettings View");
+		}
 
-	[GtkCallback]
-	private void remove_button_clicked (Button button) {
-		stdout.printf ("clicked on the remove button\n");
-	}
+		[GtkCallback]
+		private void add_button_clicked (Button button) {
+			AddTestDialog add_test_dialog = new AddTestDialog (application);
+			add_test_dialog.show_all ();
+		}
 
-	private void update_test_list () {
-		Gtk.ListStore new_test_list_store = test_list_store;
+		[GtkCallback]
+		private void edit_button_clicked (Button button) {
+			stdout.printf ("clicked on the edit button\n");
+		}
 
-		new_test_list_store.clear ();
-		Gtk.TreeIter iter;
-        test_list_store.append (out iter);
-        foreach (WordList word_list in word_lists) {
-        	test_list_store.set (iter, 0, word_list.get_id (), 1, word_list.get_course (), 2, word_list.get_name (), 3, word_list.get_year ());
-        }
-        test_list_store = new_test_list_store;
+		[GtkCallback]
+		private void remove_button_clicked (Button button) {
+			stdout.printf ("clicked on the remove button\n");
+		}
+
+		public void update_test_list () {
+			Gtk.ListStore new_test_list_store = test_list_store;
+
+			new_test_list_store.clear ();
+			Gtk.TreeIter iter;
+	        test_list_store.append (out iter);
+	        foreach (WordList word_list in word_lists) {
+	        	test_list_store.set (iter, 0, word_list.get_id (), 1, word_list.get_course (), 2, word_list.get_name (), 3, word_list.get_year ());
+	        }
+	        test_list_store = new_test_list_store;
+		}
 	}
 }
+

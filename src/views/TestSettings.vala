@@ -23,7 +23,7 @@ using Gtk;
 [GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/test_settings.ui")]
 public class Socratest.TestSettings : Gtk.Box {
 
-	private Stack main_stack;
+	private weak Stack main_stack;
 
 	[GtkChild]
 	private Label order;

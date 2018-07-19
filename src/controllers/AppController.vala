@@ -27,31 +27,31 @@ namespace Socratest.Controllers {
 	 */
 	public class AppController {
 
-		private Gtk.Application            	application;
+		private Socratest.Application       		application;
 		private Welcome                    	welcome_view;
-		private Home 						home_view;
+		public Home 						home_view { get; private set; default = null; }
 		private TestView 					test_view;
 		private TestResults 				test_results;
 		private TestSettings 				test_settings;
 		private Gtk.HeaderBar              	headerbar;
-		private Gtk.ApplicationWindow      	window { get; private set; default = null; }
-		private Gtk.Stack					main_stack;
-		private TestDB 						test_db;
-		private WordList[] 					word_lists;
+		public Gtk.ApplicationWindow      	window { get; private set; default = null; }
+		public Gtk.Stack					main_stack { get; private set; default = null; }
+		public TestDB 						test_db { get; private set; default = null; }
+		public WordList[] 					word_lists;
 
 		/**
 		 * Constructs a new {@code AppController} object.
 		 */
-		public AppController (Gtk.Application application) {
+		public AppController (Socratest.Application application) {
 			this.application = application;
-			this.window = new Window (this.application);
+			this.window = new Window ((Gtk.Application) this.application);
 			this.headerbar = new HeaderBar ();
 			this.main_stack = new Gtk.Stack ();
 			this.test_db = new TestDB ();
 			this.word_lists = test_db.get_wordlists ();
 
-			this.welcome_view = new Welcome (this.window, main_stack);
-			this.home_view = new Home (main_stack, test_db, ref word_lists);
+			this.welcome_view = new Welcome ((Socratest.Application) this.application);
+			this.home_view = new Home ((Socratest.Application) this.application);
 			this.test_view = new TestView (main_stack);
 			this.test_results = new TestResults (main_stack);
 			this.test_settings = new TestSettings (main_stack);
@@ -85,5 +85,6 @@ namespace Socratest.Controllers {
 		public void quit () {
 			window.destroy ();
 		}
+
 	}
 }

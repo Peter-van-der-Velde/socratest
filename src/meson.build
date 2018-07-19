@@ -8,6 +8,7 @@ sources += files(
     'model/WordList.vala',
 
     'controllers/AppController.vala',
+    'controllers/ActionManager.vala',
 
     'views/TestResults.vala',
     'views/TestView.vala',

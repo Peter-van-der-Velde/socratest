@@ -29,6 +29,7 @@ namespace Socratest {
 	public class Application : Granite.Application {
 
 		public AppController controller;
+		public ActionManager action_manager;
 
 		/**
 		 * Constructs a new {@code Application} object.
@@ -54,8 +55,10 @@ namespace Socratest {
 		 */
 		public override void activate () {
 			if (controller == null) {
-				stdout.printf("[DBG] new app\n");
 				controller = new AppController (this);
+			}
+			if (action_manager == null) {
+				action_manager = new ActionManager (this);
 			}
 
 			controller.activate ();

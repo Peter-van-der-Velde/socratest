@@ -22,38 +22,24 @@ namespace Socratest.Views {
 
 
 	/**
-	 * The {@code AppView} class.
+	 * The {@code Welcome} class.
 	 *
 	 * @since 1.0.0
 	 */
 	public class Welcome : Gtk.Box {
 
-		private string search_entry_text;
-		private Stack main_stack;
 		/**
 		 * Constructs a new {@code AppView} object.
 		 */
-		public Welcome (Gtk.Window parent, Gtk.Stack main_stack) {
+		public Welcome (Socratest.Application application) {
+			Gtk.Window parent = application.controller.window;
 			var welcome_view = new Granite.Widgets.Welcome (_("Welcome to Socratest"), _("It seems that there aren't any wordlists yet."));
 			welcome_view.append ("document-new", _("New Wordlist"), _("Create a new wordlist."));
 
-			this.main_stack = main_stack;
-
 			welcome_view.activated.connect ((index) => {
 				try {
-					AddTestDialog add_test_dialog = new AddTestDialog (parent);
+					AddTestDialog add_test_dialog = new AddTestDialog (application);
 					add_test_dialog.show_all ();
-
-
-					WordList[] word_lists;
-
-					TestDB test_db = new TestDB ();
-					word_lists = test_db.get_wordlists ();
-
-					if (word_lists.length > 0) {
-						this.main_stack.set_visible_child_name ("Home View");
-						Home home = ((Home) main_stack.get_child_by_name ("Home View"));
-					}
 				} catch (Error e) {
 					warning (e.message);
 				}

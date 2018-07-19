@@ -23,7 +23,7 @@ using Gtk;
 [GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/test_results.ui")]
 public class Socratest.TestResults : Gtk.Box {
 
-	private Stack main_stack;
+	private weak Stack main_stack;
 
 	public TestResults (Stack main_stack) {
 		this.main_stack = main_stack;

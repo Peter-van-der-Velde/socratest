@@ -64,8 +64,11 @@ namespace Socratest.Widgets {
 		[GtkChild]
 		private Gtk.Button cancel_button;
 
-		public AddTestDialog (Gtk.Window parent) {
-			this.set_transient_for (parent);
+		private weak Socratest.Application application;
+
+		public AddTestDialog (Socratest.Application application) {
+			this.application = application;
+			this.set_transient_for (application.controller.window);
 
 			// make the ui easily translatable
 			this.word_list_name_label.set_label (_("Wordlist Name:"));
@@ -92,6 +95,7 @@ namespace Socratest.Widgets {
 
 			TestDB test_db = new TestDB ();
 			test_db.add_word_list (new_word_list);
+			application.action_manager.do ("add word_list");
 			this.close ();
 		}
 

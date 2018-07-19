@@ -22,7 +22,7 @@
       </row>
     </data>
   </object>
-  <template class="SocratestHome" parent="GtkBox">
+  <template class="SocratestViewsHome" parent="GtkBox">
     <property name="can_focus">False</property>
     <child>
       <object class="GtkBox" id="home_box">
