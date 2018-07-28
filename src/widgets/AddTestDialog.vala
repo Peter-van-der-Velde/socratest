@@ -19,6 +19,7 @@
 * Authored by: Peter van der Velde <petervandervelde2@gmail.com>
 */
 using Socratest.Configs;
+using Socratest.Controllers;
 
 namespace Socratest.Widgets {
 
@@ -64,12 +65,11 @@ namespace Socratest.Widgets {
 		[GtkChild]
 		private Gtk.Button cancel_button;
 
-		private weak Socratest.Application application;
+		private ActionManager action_manager;
 
-		public AddTestDialog (Socratest.Application application) {
-			this.application = application;
-			this.set_transient_for (application.controller.window);
-
+		public AddTestDialog (Gtk.Window parent, ActionManager action_manager) {
+			this.set_transient_for (parent);
+			this.action_manager = action_manager;
 			// make the ui easily translatable
 			this.word_list_name_label.set_label (_("Wordlist Name:"));
 			this.word_list_name_entry.set_text (_("New Wordlist"));
@@ -95,7 +95,8 @@ namespace Socratest.Widgets {
 
 			TestDB test_db = new TestDB ();
 			test_db.add_word_list (new_word_list);
-			application.action_manager.do ("add word_list");
+			print ("AddTestDialog add button pressed\n");
+			action_manager.do ("add word_list");
 			this.close ();
 		}
 

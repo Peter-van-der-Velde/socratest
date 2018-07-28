@@ -14,9 +14,10 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-using Gtk;
+
 using Socratest.Configs;
 using Socratest.Widgets;
+using Socratest.Controllers;
 
 namespace Socratest.Views {
 
@@ -29,16 +30,15 @@ namespace Socratest.Views {
 	public class Welcome : Gtk.Box {
 
 		/**
-		 * Constructs a new {@code AppView} object.
+		 * Constructs a new {@code Welcome} object.
 		 */
-		public Welcome (Socratest.Application application) {
-			Gtk.Window parent = application.controller.window;
+		public Welcome (Gtk.Window parent, ActionManager action_manager) {
 			var welcome_view = new Granite.Widgets.Welcome (_("Welcome to Socratest"), _("It seems that there aren't any wordlists yet."));
 			welcome_view.append ("document-new", _("New Wordlist"), _("Create a new wordlist."));
 
 			welcome_view.activated.connect ((index) => {
 				try {
-					AddTestDialog add_test_dialog = new AddTestDialog (application);
+					AddTestDialog add_test_dialog = new AddTestDialog (parent, action_manager);
 					add_test_dialog.show_all ();
 				} catch (Error e) {
 					warning (e.message);

@@ -27,18 +27,20 @@ namespace Socratest.Controllers {
 	 */
 	public class ActionManager {
 
-		private weak Socratest.Application        application;
+		private AppController 				app_controller;
+		private weak Socratest.Application  application;
 		private weak Gtk.ApplicationWindow  window { get; private set; default = null; }
 		private weak TestDB 				test_db;
-		Gee.List<string>					actions;
+		Gee.LinkedList<string>				actions;
+		// private unowned Home				home_view;
 
 		/**
 		 * Constructs a new {@code ActionManager} object.
 		 */
-		public ActionManager (Socratest.Application application) {
-			this.application = application;
-			this.window = application.controller.window;
-			this.actions = new Gee.ArrayList<string> ();
+		public ActionManager (AppController app_controller) {
+			// this.home_view = home_view;
+			this.app_controller = app_controller;
+			this.actions = new Gee.LinkedList<string> ();
 		}
 
 		public void activate () {
@@ -47,10 +49,16 @@ namespace Socratest.Controllers {
 		public void do (string action) {
 			switch (action)
 			{
-				case "add wordlist":
-					this.application.controller.home_view.update_test_list ();
+				case "add word_list":
+					print ("add wordlist acm.do\n");
+					app_controller.home_view.update_test_list ();
+					break;
+				default:
+					print ("[ERROR] Unknown action: %s", action);
 					break;
 			}
+			// add action to actions list
+			actions.offer_tail (action);
 			return;
 		}
 
@@ -59,7 +67,13 @@ namespace Socratest.Controllers {
 			if (actions.size == 0)
 				return;
 
-
+			string action = actions.poll_tail ();
+			switch (action)
+			{
+				case "add wordlist":
+					// this.application.controller.home_view.update_test_list ();
+					break;
+			}
 			return;
 		}
 	}

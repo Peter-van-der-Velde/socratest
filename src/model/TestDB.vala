@@ -45,7 +45,7 @@ public class TestDB {
 					File appdata_folder = File.new_for_path (appdata);
 					appdata_folder.make_directory ();
 				} catch (Error e) {
-					stdout.printf ("Error: %s\n", e.message);
+					print ("Error: %s\n", e.message);
 				}
 			}
 		}
@@ -57,7 +57,7 @@ public class TestDB {
 				File appdata_folder = File.new_for_path (@"$appdata/socratest");
 				appdata_folder.make_directory ();
 			} catch (Error e) {
-				stdout.printf ("Error: %s\n", e.message);
+				print ("Error: %s\n", e.message);
 			}
 		}
 		database_location = @"$appdata/socratest/test_database.db";

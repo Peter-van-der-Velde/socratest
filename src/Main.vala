@@ -41,7 +41,7 @@ public class Main {
 		catch (Error error) {}
 
 		if (version) {
-			stdout.printf (Socratest.Configs.Constants.PROGRAME_NAME +" "+ Socratest.Configs.Constants.VERSION + "\r\n");
+			print (Socratest.Configs.Constants.PROGRAME_NAME +" "+ Socratest.Configs.Constants.VERSION + "\r\n");
 			return 0;
 		}
 		else {

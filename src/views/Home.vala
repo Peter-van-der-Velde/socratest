@@ -20,6 +20,7 @@
 */
 using Gtk;
 using Socratest.Widgets;
+using Socratest.Controllers;
 
 namespace Socratest.Views {
 
@@ -33,10 +34,12 @@ namespace Socratest.Views {
 	[GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/home.ui")]
 	public class Home : Gtk.Box {
 
-		private Socratest.Application application;
+		private Gtk.Window parent;
+		private ActionManager action_manager;
+		private Stack main_stack;
 		private string search_entry_text;
-		private weak Stack main_stack;
 		private WordList[] word_lists;
+		private TestDB test_db;
 
 		[GtkChild]
 		private Gtk.ListStore test_list_store;
@@ -44,53 +47,58 @@ namespace Socratest.Views {
 		[GtkChild]
 		private TreeView test_tree;
 
-		public Home (Socratest.Application application) {
-			this.application = application;
-			this.main_stack = this.application.controller.main_stack;
+		public Home (Gtk.Window parent, Gtk.Stack main_stack, ActionManager action_manager) {
+			this.parent = parent;
+			this.main_stack = main_stack;
+			this.action_manager = action_manager;
 			search_entry_text = "";
 
-	        this.word_lists = this.application.controller.test_db.get_wordlists ();
-	        update_test_list ();
+			this.test_db = new TestDB ();
+			this.word_lists = test_db.get_wordlists ();
+			print ("[DBG] Amount of wordlists: %d\n", word_lists.length);
+			update_test_list ();
 		}
 
 		[GtkCallback]
 		private void search_entry_changed (Editable search_entry) {
-			search_entry_text = ((SearchEntry)search_entry).get_text ();
-			stdout.printf ("wrote \"%s\" in the search entry\n", search_entry_text);
+			search_entry_text = ((SearchEntry) search_entry).get_text ();
+			print ("wrote \"%s\" in the search entry\n", search_entry_text);
 		}
 
 		[GtkCallback]
 		private void play_button_clicked (Button button) {
-			stdout.printf ("clicked on the play button\n");
+			print ("clicked on the play button\n");
 			main_stack.set_visible_child_name ("TestSettings View");
 		}
 
 		[GtkCallback]
 		private void add_button_clicked (Button button) {
-			AddTestDialog add_test_dialog = new AddTestDialog (application);
+			AddTestDialog add_test_dialog = new AddTestDialog (parent, action_manager);
 			add_test_dialog.show_all ();
 		}
 
 		[GtkCallback]
 		private void edit_button_clicked (Button button) {
-			stdout.printf ("clicked on the edit button\n");
+			print ("clicked on the edit button\n");
 		}
 
 		[GtkCallback]
 		private void remove_button_clicked (Button button) {
-			stdout.printf ("clicked on the remove button\n");
+			print ("clicked on the remove button\n");
 		}
 
 		public void update_test_list () {
-			Gtk.ListStore new_test_list_store = test_list_store;
+			this.test_db = new TestDB ();
+			this.word_lists = test_db.get_wordlists ();
+			print ("homeview updtl\n");
+			print ("[DBG] Amount of wordlists: %d\n", word_lists.length);
 
-			new_test_list_store.clear ();
+			test_list_store.clear ();
 			Gtk.TreeIter iter;
-	        test_list_store.append (out iter);
-	        foreach (WordList word_list in word_lists) {
-	        	test_list_store.set (iter, 0, word_list.get_id (), 1, word_list.get_course (), 2, word_list.get_name (), 3, word_list.get_year ());
-	        }
-	        test_list_store = new_test_list_store;
+			foreach (WordList word_list in word_lists) {
+				test_list_store.append (out iter);
+				test_list_store.set (iter, 0, word_list.get_id (), 1, word_list.get_course (), 2, word_list.get_name (), 3, word_list.get_year ());
+			}
 		}
 	}
 }

@@ -23,7 +23,7 @@ using Gtk;
 [GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/test.ui")]
 public class Socratest.TestView : Gtk.Box {
 
-	private weak Stack main_stack;
+	private Stack main_stack;
 
 	[GtkChild]
 	private Label cw_label;
@@ -54,6 +54,6 @@ public class Socratest.TestView : Gtk.Box {
 
 	[GtkCallback]
 	void next_button_clicked (Button button) {
-		stdout.printf ("next\n");
+		print ("next\n");
 	}
 }
