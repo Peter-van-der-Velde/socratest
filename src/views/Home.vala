@@ -47,6 +47,9 @@ namespace Socratest.Views {
 		[GtkChild]
 		private TreeView test_tree;
 
+		[GtkChild]
+		private TreeSelection selected_row;
+
 		public Home (Gtk.Window parent, Gtk.Stack main_stack, ActionManager action_manager) {
 			this.parent = parent;
 			this.main_stack = main_stack;
@@ -85,6 +88,20 @@ namespace Socratest.Views {
 		[GtkCallback]
 		private void remove_button_clicked (Button button) {
 			print ("clicked on the remove button\n");
+			Gtk.TreeIter iter;
+			Gtk.TreeModel model;
+			// only if you actually selected a row you can remove it
+			if (selected_row.get_selected(out model, out iter)) {
+				int id;
+				string course;
+				string name;
+				int year;
+
+				model.get (iter, 0, out id, 1, out course, 2, out name, 3, out year);
+       			print ("removing id:%d c:%s n:%s y:%d...\n", id, course, name, year);
+       			test_db.remove_word_list (id);
+       			update_test_list ();
+    		}
 		}
 
 		public void update_test_list () {
@@ -95,7 +112,7 @@ namespace Socratest.Views {
 
 			test_list_store.clear ();
 			Gtk.TreeIter iter;
-			foreach (WordList word_list in word_lists) {
+ 			foreach (WordList word_list in word_lists) {
 				test_list_store.append (out iter);
 				test_list_store.set (iter, 0, word_list.get_id (), 1, word_list.get_course (), 2, word_list.get_name (), 3, word_list.get_year ());
 			}

@@ -124,6 +124,22 @@ public class TestDB {
 		return true;
 	}
 
+	public bool remove_word_list (int id) {
+		Statement stmt;
+		int rc = 0;
+		string errmsg;
+
+		string prepared_query_str = @"DELETE FROM WordList WHERE id=$id;";
+
+		rc = db.exec (prepared_query_str, null, out errmsg);
+		if (rc != Sqlite.OK) {
+			stderr.printf ("Error: %s\n", errmsg);
+			return false;
+		}
+
+		return true;
+	}
+
 	public WordList[] get_wordlists () {
 		Sqlite.Statement stmt;
 		int rc;

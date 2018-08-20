@@ -160,7 +160,7 @@
                     <property name="level_indentation">4</property>
                     <property name="enable_grid_lines">horizontal</property>
                     <child internal-child="selection">
-                      <object class="GtkTreeSelection"/>
+                      <object class="GtkTreeSelection" id="selected_row"/>
                     </child>
                     <child>
                       <object class="GtkTreeViewColumn" id="treeviewcolumn1">
