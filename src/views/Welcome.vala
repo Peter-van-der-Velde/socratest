@@ -38,7 +38,7 @@ namespace Socratest.Views {
 
 			welcome_view.activated.connect ((index) => {
 				try {
-					AddTestDialog add_test_dialog = new AddTestDialog (parent, action_manager);
+					AddTestDialog add_test_dialog = new AddTestDialog (parent, action_manager, -1);
 					add_test_dialog.show_all ();
 				} catch (Error e) {
 					warning (e.message);

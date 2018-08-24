@@ -85,7 +85,7 @@ public class TestDB {
 
 		string query = """
 		CREATE TABLE WordList (
-			id				INTEGER		PRIMARY KEY	AUTOINCREMENT,
+			id				INTEGER			PRIMARY KEY	AUTOINCREMENT,
 			word_list_text 	TEXT								NOT NULL,
 			name			TEXT								NOT NULL,
 			course			TEXT								NOT NULL,

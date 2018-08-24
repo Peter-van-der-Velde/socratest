@@ -66,8 +66,11 @@ namespace Socratest.Widgets {
 		private Gtk.Button cancel_button;
 
 		private ActionManager action_manager;
+		private WordList[] word_lists;
+		private int id;
+		TestDB test_db;
 
-		public AddTestDialog (Gtk.Window parent, ActionManager action_manager) {
+		public AddTestDialog (Gtk.Window parent, ActionManager action_manager, int id) {
 			this.set_transient_for (parent);
 			this.action_manager = action_manager;
 			// make the ui easily translatable
@@ -82,10 +85,32 @@ namespace Socratest.Widgets {
 			this.cancel_button.set_label (_("Cancel"));
 
 			add_button.set_sensitive (false);
+
+			this.test_db = new TestDB ();
+			this.word_lists = test_db.get_wordlists ();
+			this.id = id;
+
+			if (id != -1) { // -1 is passed to the function if there is not already a wordlist
+				this.add_button.set_label (_("Edit"));
+
+				foreach (var word_list in word_lists) {
+					if (word_list.get_id () == id) {
+						// if wordlist is found add info to the ui
+						word_list_name_entry.set_text (word_list.get_name ());
+						course_entry.set_text (word_list.get_course ());
+						year_entry.set_text (word_list.get_year ().to_string ());
+
+						wl_buffer.set_text (word_list.get_text ());
+						break;
+					}
+				}
+
+			}
 		}
 
 		[GtkCallback]
 		private void add_button_clicked (Gtk.Button button) {
+
 			string word_list_text = word_list_text_view.get_buffer ().text;
 			int year = int.parse (year_entry.get_text ());
 			string course = course_entry.get_text ();
@@ -93,7 +118,6 @@ namespace Socratest.Widgets {
 
 			WordList new_word_list = new WordList (word_list_text, year, course, name, -1);
 
-			TestDB test_db = new TestDB ();
 			test_db.add_word_list (new_word_list);
 			print ("AddTestDialog add button pressed\n");
 			action_manager.do ("add word_list");

@@ -76,13 +76,28 @@ namespace Socratest.Views {
 
 		[GtkCallback]
 		private void add_button_clicked (Button button) {
-			AddTestDialog add_test_dialog = new AddTestDialog (parent, action_manager);
+			int id = 1; // -1 means it doesn't have a valid id, and is thus non existing
+			AddTestDialog add_test_dialog = new AddTestDialog (parent, action_manager, id);
 			add_test_dialog.show_all ();
 		}
 
 		[GtkCallback]
 		private void edit_button_clicked (Button button) {
 			print ("clicked on the edit button\n");
+			Gtk.TreeIter iter;
+			Gtk.TreeModel model;
+			// only if you actually selected a row you can remove it
+			if (selected_row.get_selected(out model, out iter)) {
+				int id;
+				string course;
+				string name;
+				int year;
+
+				model.get (iter, 0, out id, 1, out course, 2, out name, 3, out year);
+       			print ("edit id:%d c:%s n:%s y:%d...\n", id, course, name, year);
+       			AddTestDialog add_test_dialog = new AddTestDialog (parent, action_manager, id);
+				add_test_dialog.show_all ();
+    		}
 		}
 
 		[GtkCallback]
