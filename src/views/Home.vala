@@ -70,8 +70,18 @@ namespace Socratest.Views {
 
 		[GtkCallback]
 		private void play_button_clicked (Button button) {
-			print ("clicked on the play button\n");
-			main_stack.set_visible_child_name ("TestSettings View");
+			Gtk.TreeIter iter;
+			Gtk.TreeModel model;
+			// only if you actually selected a row you can remove it
+			if (selected_row.get_selected(out model, out iter)) {
+				int id;
+				string course;
+				string name;
+				int year;
+
+				model.get (iter, 0, out id, 1, out course, 2, out name, 3, out year);
+				action_manager.pressed_play (id);
+    		}
 		}
 
 		[GtkCallback]

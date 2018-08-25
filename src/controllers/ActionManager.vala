@@ -84,5 +84,11 @@ namespace Socratest.Controllers {
 			}
 			return;
 		}
+
+		public void pressed_play (int id) {
+			app_controller.current_wordlist = id;
+			app_controller.main_stack.set_visible_child_name ("TestSettings View");
+		}
+
 	}
 }

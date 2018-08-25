@@ -40,6 +40,7 @@ namespace Socratest.Controllers {
 		public Gtk.Stack					main_stack { get; private set; default = null; }
 		public TestDB 						test_db { get; private set; default = null; }
 		public WordList[] 					word_lists;
+		public int 							current_wordlist;
 
 		/**
 		 * Constructs a new {@code AppController} object.
