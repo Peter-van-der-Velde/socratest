@@ -83,7 +83,6 @@ namespace Socratest.Views {
 
 		[GtkCallback]
 		private void edit_button_clicked (Button button) {
-			print ("clicked on the edit button\n");
 			Gtk.TreeIter iter;
 			Gtk.TreeModel model;
 			// only if you actually selected a row you can remove it
@@ -102,7 +101,6 @@ namespace Socratest.Views {
 
 		[GtkCallback]
 		private void remove_button_clicked (Button button) {
-			print ("clicked on the remove button\n");
 			Gtk.TreeIter iter;
 			Gtk.TreeModel model;
 			// only if you actually selected a row you can remove it
@@ -122,7 +120,6 @@ namespace Socratest.Views {
 		public void update_test_list () {
 			this.test_db = new TestDB ();
 			this.word_lists = test_db.get_wordlists ();
-			print ("homeview updtl\n");
 			print ("[DBG] Amount of wordlists: %d\n", word_lists.length);
 
 			test_list_store.clear ();

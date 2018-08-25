@@ -32,7 +32,6 @@ namespace Socratest.Controllers {
 		private weak Gtk.ApplicationWindow  window { get; private set; default = null; }
 		private weak TestDB 				test_db;
 		Gee.LinkedList<string>				actions;
-		// private unowned Home				home_view;
 
 		/**
 		 * Constructs a new {@code ActionManager} object.
@@ -51,6 +50,9 @@ namespace Socratest.Controllers {
 			{
 				case "add word_list":
 					app_controller.home_view.update_test_list ();
+					if (app_controller.main_stack.get_visible_child_name () == "Welcome View") {
+						app_controller.main_stack.set_visible_child_name ("Home View");
+					}
 					break;
 				case "edit word_list":
 					app_controller.home_view.update_test_list ();
