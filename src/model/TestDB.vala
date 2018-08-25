@@ -113,7 +113,29 @@ public class TestDB {
 		string course = word_list.get_course ();
 		int year = word_list.get_year ();
 
-		string query = @" INSERT INTO WordList (word_list_text, name, course, year) VALUES ('$word_list_text', '$name', '$course', $year);";
+		string query = @"INSERT INTO WordList (word_list_text, name, course, year) VALUES ('$word_list_text', '$name', '$course', $year);";
+
+		rc = db.exec (query, null, out errmsg);
+		if (rc != Sqlite.OK) {
+			stderr.printf ("Error: %s\n", errmsg);
+			return false;
+		}
+
+		return true;
+	}
+
+	public bool edit_word_list (WordList word_list) {
+		Statement stmt;
+		int rc = 0;
+		string errmsg;
+
+		int id = word_list.get_id ();
+		string word_list_text = word_list.get_text ();
+		string name = word_list.get_name ();
+		string course = word_list.get_course ();
+		int year = word_list.get_year ();
+
+		string query = @"UPDATE WordList SET word_list_text = '$word_list_text', name= '$name', course = '$course', year = $year WHERE id = $id;";
 
 		rc = db.exec (query, null, out errmsg);
 		if (rc != Sqlite.OK) {

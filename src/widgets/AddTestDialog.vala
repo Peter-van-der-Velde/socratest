@@ -116,11 +116,17 @@ namespace Socratest.Widgets {
 			string course = course_entry.get_text ();
 			string name =  word_list_name_entry.get_text ();
 
-			WordList new_word_list = new WordList (word_list_text, year, course, name, -1);
+			WordList new_word_list = new WordList (word_list_text, year, course, name, id);
 
-			test_db.add_word_list (new_word_list);
-			print ("AddTestDialog add button pressed\n");
-			action_manager.do ("add word_list");
+			if (id == -1) { // if id equals -1, it means that it is a new wordlist.
+				test_db.add_word_list (new_word_list);
+				action_manager.do ("add word_list");
+				this.close ();
+				return;
+			}
+
+			test_db.edit_word_list (new_word_list);
+			action_manager.do ("edit word_list");
 			this.close ();
 		}
 

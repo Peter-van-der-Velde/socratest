@@ -50,7 +50,9 @@ namespace Socratest.Controllers {
 			switch (action)
 			{
 				case "add word_list":
-					print ("add wordlist acm.do\n");
+					app_controller.home_view.update_test_list ();
+					break;
+				case "edit word_list":
 					app_controller.home_view.update_test_list ();
 					break;
 				default:
@@ -71,7 +73,11 @@ namespace Socratest.Controllers {
 			switch (action)
 			{
 				case "add wordlist":
-					// this.application.controller.home_view.update_test_list ();
+					break;
+				case "edit word_list":
+					break;
+				default:
+					print ("[ERROR] Unknown action: %s", action);
 					break;
 			}
 			return;
