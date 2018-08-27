@@ -23,8 +23,8 @@ using Gee;
 
 public class WordList {
 
+	public ArrayList words;
 	private int id;
-	private ArrayList words;
 	private int year;
 	private string name;
 	private string course;

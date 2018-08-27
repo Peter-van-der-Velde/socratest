@@ -32,4 +32,24 @@ public class Word {
 		anwsered_corectly = false;
 		amount_of_tries = 0;
 	}
+
+	public string get_word () {
+		return word;
+	}
+
+	public string get_anwser () {
+		return anwser;
+	}
+
+	public int get_amount_of_tries () {
+		return amount_of_tries;
+	}
+
+	public void got_right () {
+		anwsered_corectly = true;
+	}
+
+	public void got_wrong () {
+		amount_of_tries++;
+	}
 }
