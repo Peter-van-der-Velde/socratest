@@ -90,5 +90,9 @@ namespace Socratest.Controllers {
 			app_controller.main_stack.set_visible_child_name ("TestSettings View");
 		}
 
+		public void set_test_settings () {
+
+		}
+
 	}
 }

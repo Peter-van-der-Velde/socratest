@@ -56,6 +56,23 @@ namespace Socratest.Configs {
          */
         public int window_heigth { get; set; }
 
+        /**
+         * This property will represent the order of the words in a test.
+         * Variable of type {@code int} as declared.
+         */
+        public string test_word_order { get; set; }
+
+        /**
+         * This property will represent the kind of test it will be, abc like or standard typed out.
+         * Variable of type {@code int} as declared.
+         */
+        public string type_of_test { get; set; }
+
+        /**
+         * This property will represent wether or not a student would like to repeat wrong ansewerd questions.
+         * Variable of type {@code int} as declared.
+         */
+        public bool repeat { get; set; }
 
         /**
          * Constructs a new {@code Settings} object

@@ -23,6 +23,21 @@
             <summary>Most recent heigth of Socratest</summary>
             <description>Most recent heigth of Socratest</description>
         </key>
+        <key name="test-word-order" type="s">
+            <default>"L - R"</default>
+            <summary>Order of the tests</summary>
+            <description>Most recent heigth of Socratest</description>
+        </key>
+        <key name="type-of-test" type="s">
+            <default>"Traditional"</default>
+            <summary>Most recent heigth of Socratest</summary>
+            <description>Most recent heigth of Socratest</description>
+        </key>
+        <key name="repeat" type="b">
+            <default>false</default>
+            <summary>Most recent heigth of Socratest</summary>
+            <description>Most recent heigth of Socratest</description>
+        </key>
     </schema>
 
 </schemalist>

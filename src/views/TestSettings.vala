@@ -48,7 +48,7 @@ public class Socratest.TestSettings : Gtk.Box {
 
 	public TestSettings (Stack main_stack) {
 		this.main_stack = main_stack;
-		// I manually set the text so it can easily be translated using po
+		// manually set the text so it can easily be translated using po
 		order.set_text (_("Order:"));
 		type_label.set_text (_("Type of test:"));
 		repeat_label.set_text (_("Repeat until every anwser is correct"));
@@ -64,11 +64,69 @@ public class Socratest.TestSettings : Gtk.Box {
 		type_of_test_combobox.active = 0;
 
 		start_button.set_label (_("Start"));
+
+		// get the last set test settings
+		var settings = Socratest.Configs.Settings.get_instance ();
+		switch (settings.test_word_order) {
+			case "L - R":
+				order_combobox.active = 0;
+				break;
+			case "R - L":
+				order_combobox.active = 1;
+				break;
+			case "Both":
+				order_combobox.active = 2;
+				break;
+			case "Random":
+				order_combobox.active = 3;
+				break;
+		}
+
+		switch (settings.type_of_test) {
+			case "Traditional":
+				order_combobox.active = 0;
+				break;
+			case "A, B, C":
+				order_combobox.active = 1;
+				break;
+		}
+
+		// sets the repeat switch on active or not according to the gsettings value
+		repeat.active = settings.repeat;
+
 	}
 
 	[GtkCallback]
 	private void start_button_clicked (Button button) {
-		print ("clicked on the start button\n");
+		// set the gsettings-settings to the settings set in the view
+		var settings = Socratest.Configs.Settings.get_instance ();
+		switch (order_combobox.active) {
+			case 0:
+				settings.test_word_order = "L - R";
+				break;
+			case 1:
+				settings.test_word_order = "R - L";
+				break;
+			case 2:
+				settings.test_word_order = "Both";
+				break;
+			case 3:
+				settings.test_word_order = "Random";
+				break;
+		}
+
+		switch (order_combobox.active) {
+			case 0:
+				settings.type_of_test = "Traditional";
+				break;
+			case 1:
+				settings.type_of_test= "A, B, C";
+				break;
+		}
+
+		// sets the repeat switch on active or not according to the gsettings value
+		settings.repeat = repeat.active;
+
 		main_stack.set_visible_child_name ("Test View");
 	}
 }
