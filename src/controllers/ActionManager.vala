@@ -86,12 +86,25 @@ namespace Socratest.Controllers {
 		}
 
 		public void pressed_play (int id) {
-			app_controller.current_wordlist = id;
+			app_controller.current_wordlist_id = id;
 			app_controller.main_stack.set_visible_child_name ("TestSettings View");
 		}
 
 		public void set_test_settings () {
 
+		}
+
+		public WordList get_current_wordlist () {
+			foreach (WordList word_list in app_controller.word_lists) {
+				if (word_list.get_id () == app_controller.current_wordlist_id) {
+					return word_list;
+				}
+			}
+			return null;
+		}
+
+		public void init_test_view () {
+			app_controller.test_view.init ();
 		}
 
 	}

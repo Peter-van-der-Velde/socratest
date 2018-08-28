@@ -19,11 +19,10 @@
 * Authored by: Peter van der Velde <petervandervelde2@gmail.com>
 */
 using Gtk;
+using Socratest.Controllers;
 
 [GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/test.ui")]
 public class Socratest.TestView : Gtk.Box {
-
-	private Stack main_stack;
 
 	[GtkChild]
 	private Label cw_label;
@@ -43,9 +42,13 @@ public class Socratest.TestView : Gtk.Box {
 	[GtkChild]
 	private Button next_button;
 
+	private Test test;
+	private Stack main_stack;
+	private ActionManager action_manager;
 
-	public TestView (Stack main_stack) {
+	public TestView (Stack main_stack, ActionManager action_manager) {
 		this.main_stack = main_stack;
+		this.action_manager = action_manager;
 
 		cw_label.set_text (_("Current Word:"));
 		feedback.set_text ("");
@@ -54,6 +57,35 @@ public class Socratest.TestView : Gtk.Box {
 
 	[GtkCallback]
 	void next_button_clicked (Button button) {
-		print ("next\n");
+		string anwser = current_anwser.get_text ();
+
+		feedback.label = "";
+
+
+		this.cw_label.label = test.get_current_word ();
+		int index = test.get_index () + 1;
+		int length = test.get_length ();
+		this.current_word_of.label =  @"$index / $length";
+		return;
 	}
+
+	public void init () {
+		feedback.label = ""; // clean the feedback label
+
+		// get the selected wordlist information
+		WordList wl = action_manager.get_current_wordlist ();
+
+		//init the new test
+		var settings = Socratest.Configs.Settings.get_instance ();
+		this.test = new Test (wl.get_text (), wl.get_name (), wl.get_year (), wl.get_course (), settings.type_of_test, settings.test_word_order, wl.get_id ());
+
+		// TODO:
+		// set the ui to the first values of the test
+		this.cw_label.label = test.get_current_word ();
+		int index = test.get_index () + 1;
+		int length = test.get_length ();
+		this.current_word_of.label =  @"$index / $length";
+	}
+
+
 }

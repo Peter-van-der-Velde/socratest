@@ -18,7 +18,6 @@
 *
 * Authored by: Peter van der Velde <petervandervelde2@gmail.com>
 */
-using Gee;
 
 
 public class Test {
@@ -35,10 +34,34 @@ public class Test {
 	 *
 	 * @since 1.0.0
 	 */
-	public Test (string word_list, string name, int year, string course, int test_type, string order, int id) {
+	public Test (string word_list, string name, int year, string course, string test_type, string order, int id) {
 		this.word_list = new WordList (word_list, year, course, name, id);
 
 		current_word_iter = 0;
+
+		switch (order) {
+			case "L - R":
+				break;
+			case "R - L": // reverse the words with the anwsers
+				Gee.ArrayList<Word> rl_words = new Gee.ArrayList<Word> ();
+
+				foreach (Word word in ((Word[]) this.word_list.words.to_array ())) {
+					rl_words.add (new Word (word.get_anwser (), word.get_word ()));
+				}
+				this.word_list.words = rl_words;
+				break;
+			case "Both":
+				Word[] t_words = ((Word[]) this.word_list.words.to_array ());
+				foreach (Word word in t_words) {
+					((Gee.ArrayList<Word>) this.word_list.words).add (new Word (word.get_anwser (), word.get_word ()));
+				}
+				break;
+			case "Random":
+				// TODO:
+				// this
+				break;
+		}
+
 	}
 
 	public string get_current_word () {
@@ -58,11 +81,15 @@ public class Test {
 		string ca = w[current_word_iter].get_anwser ();
 
 		if (ca.down () != anwser.strip ().down ()) {
-			current_word_iter++;
 			((Word[]) word_list.words.to_array ())[current_word_iter].got_wrong ();
+			if (repeat) {
+				((Gee.ArrayList<Word>) this.word_list.words).add (new Word (get_current_word (), get_current_anwser ()));
+			}
+			current_word_iter++;
 			return false;
 		}
 		((Word[]) word_list.words.to_array ())[current_word_iter].got_right ();
+		current_word_iter++;
 		return true;
 	}
 

@@ -19,11 +19,10 @@
 * Authored by: Peter van der Velde <petervandervelde2@gmail.com>
 */
 using Gtk;
+using Socratest.Controllers;
 
 [GtkTemplate (ui = "/com/gitlab/Peter_van_der_Velde/socratest/views/test_settings.ui")]
 public class Socratest.TestSettings : Gtk.Box {
-
-	private Stack main_stack;
 
 	[GtkChild]
 	private Label order;
@@ -46,8 +45,13 @@ public class Socratest.TestSettings : Gtk.Box {
 	[GtkChild]
 	private Button start_button;
 
-	public TestSettings (Stack main_stack) {
+	private Stack main_stack;
+	private ActionManager action_manager;
+
+	public TestSettings (Stack main_stack, ActionManager action_manager) {
 		this.main_stack = main_stack;
+		this.action_manager = action_manager;
+
 		// manually set the text so it can easily be translated using po
 		order.set_text (_("Order:"));
 		type_label.set_text (_("Type of test:"));
@@ -93,7 +97,6 @@ public class Socratest.TestSettings : Gtk.Box {
 
 		// sets the repeat switch on active or not according to the gsettings value
 		repeat.active = settings.repeat;
-
 	}
 
 	[GtkCallback]
@@ -127,6 +130,7 @@ public class Socratest.TestSettings : Gtk.Box {
 		// sets the repeat switch on active or not according to the gsettings value
 		settings.repeat = repeat.active;
 
+		action_manager.init_test_view ();
 		main_stack.set_visible_child_name ("Test View");
 	}
 }

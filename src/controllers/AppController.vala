@@ -32,7 +32,7 @@ namespace Socratest.Controllers {
 
 		private Welcome                    	welcome_view;
 		public Home 						home_view { get; private set; default = null; }
-		private TestView 					test_view;
+		public TestView 					test_view;
 		private TestResults 				test_results;
 		private TestSettings 				test_settings;
 		private Gtk.HeaderBar              	headerbar;
@@ -40,7 +40,7 @@ namespace Socratest.Controllers {
 		public Gtk.Stack					main_stack { get; private set; default = null; }
 		public TestDB 						test_db { get; private set; default = null; }
 		public WordList[] 					word_lists;
-		public int 							current_wordlist;
+		public int 							current_wordlist_id;
 
 		/**
 		 * Constructs a new {@code AppController} object.
@@ -57,9 +57,9 @@ namespace Socratest.Controllers {
 
 			this.welcome_view = new Welcome (this.window, this.action_manager);
 			this.home_view = new Home (this.window, this.main_stack, this.action_manager);
-			this.test_view = new TestView (main_stack);
-			this.test_results = new TestResults (main_stack);
-			this.test_settings = new TestSettings (main_stack);
+			this.test_view = new TestView (this.main_stack, this.action_manager);
+			this.test_results = new TestResults (this.main_stack);
+			this.test_settings = new TestSettings (this.main_stack, this.action_manager);
 
 			this.main_stack.add_named (home_view, "Home View");
 			this.main_stack.add_named (test_view, "Test View");
