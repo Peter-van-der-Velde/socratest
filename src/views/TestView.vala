@@ -50,27 +50,34 @@ public class Socratest.TestView : Gtk.Box {
 		this.main_stack = main_stack;
 		this.action_manager = action_manager;
 
-		cw_label.set_text (_("Current Word:"));
+		current_word.set_text (_("Current Word:"));
 		feedback.set_text ("");
 		next_button.set_label (_("Next"));
 	}
 
 	[GtkCallback]
 	void next_button_clicked (Button button) {
-		string anwser = current_anwser.get_text ();
+		string entered_anwser = current_anwser.get_text ();
+		string true_anwser = test.get_current_anwser ();
 
+		bool anwsered_right = test.check_anwser (entered_anwser);
 		feedback.label = "";
+		if (!anwsered_right) {
+			feedback.label = _(@"Your anwser: $entered_anwser,\nThe real anwser: $true_anwser");
+		}
 
 
-		this.cw_label.label = test.get_current_word ();
+		this.current_word.label = test.get_current_word ();
 		int index = test.get_index () + 1;
 		int length = test.get_length ();
 		this.current_word_of.label =  @"$index / $length";
+		current_anwser.set_text ("");
 		return;
 	}
 
 	public void init () {
 		feedback.label = ""; // clean the feedback label
+		current_anwser.set_text ("");
 
 		// get the selected wordlist information
 		WordList wl = action_manager.get_current_wordlist ();
@@ -78,10 +85,10 @@ public class Socratest.TestView : Gtk.Box {
 		//init the new test
 		var settings = Socratest.Configs.Settings.get_instance ();
 		this.test = new Test (wl.get_text (), wl.get_name (), wl.get_year (), wl.get_course (), settings.type_of_test, settings.test_word_order, wl.get_id ());
+		this.test.set_repeat (settings.repeat);
 
-		// TODO:
 		// set the ui to the first values of the test
-		this.cw_label.label = test.get_current_word ();
+		this.current_word.label = test.get_current_word ();
 		int index = test.get_index () + 1;
 		int length = test.get_length ();
 		this.current_word_of.label =  @"$index / $length";

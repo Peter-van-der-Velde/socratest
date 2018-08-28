@@ -61,7 +61,6 @@ public class Test {
 				// this
 				break;
 		}
-
 	}
 
 	public string get_current_word () {
@@ -91,6 +90,10 @@ public class Test {
 		((Word[]) word_list.words.to_array ())[current_word_iter].got_right ();
 		current_word_iter++;
 		return true;
+	}
+
+	public void set_repeat (bool value) {
+		this.repeat = value;
 	}
 
 	public int get_index () {
