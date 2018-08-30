@@ -56,7 +56,7 @@ public class Socratest.TestView : Gtk.Box {
 	}
 
 	[GtkCallback]
-	private void next_button_clicked (Button button) {
+	private void next_button_clicked () {
 		string entered_anwser = current_anwser.get_text ();
 		string true_anwser = test.get_current_anwser ();
 
@@ -83,7 +83,7 @@ public class Socratest.TestView : Gtk.Box {
 
 	[GtkCallback]
 	private void activate_gtk_entry () {
-
+		next_button_clicked ();
 	}
 
 	public void init () {
