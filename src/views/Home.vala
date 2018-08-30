@@ -86,7 +86,7 @@ namespace Socratest.Views {
 
 		[GtkCallback]
 		private void add_button_clicked (Button button) {
-			int id = 1; // -1 means it doesn't have a valid id, and is thus non existing
+			int id = -1; // -1 means it doesn't have a valid id, and is thus non existing
 			AddTestDialog add_test_dialog = new AddTestDialog (parent, action_manager, id);
 			add_test_dialog.show_all ();
 		}
