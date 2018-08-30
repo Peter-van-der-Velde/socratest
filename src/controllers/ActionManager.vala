@@ -30,14 +30,12 @@ namespace Socratest.Controllers {
 		private AppController 				app_controller;
 		private weak Socratest.Application  application;
 		private weak Gtk.ApplicationWindow  window { get; private set; default = null; }
-		private weak TestDB 				test_db;
 		Gee.LinkedList<string>				actions;
 
 		/**
 		 * Constructs a new {@code ActionManager} object.
 		 */
 		public ActionManager (AppController app_controller) {
-			// this.home_view = home_view;
 			this.app_controller = app_controller;
 			this.actions = new Gee.LinkedList<string> ();
 		}
@@ -53,9 +51,11 @@ namespace Socratest.Controllers {
 					if (app_controller.main_stack.get_visible_child_name () == "Welcome View") {
 						app_controller.main_stack.set_visible_child_name ("Home View");
 					}
+					app_controller.word_lists = app_controller.test_db.get_wordlists ();
 					break;
 				case "edit word_list":
 					app_controller.home_view.update_test_list ();
+					app_controller.word_lists = app_controller.test_db.get_wordlists ();
 					break;
 				default:
 					print ("[ERROR] Unknown action: %s", action);
@@ -107,5 +107,9 @@ namespace Socratest.Controllers {
 			app_controller.test_view.init ();
 		}
 
+		public void generate_results (Test test) {
+			app_controller.main_stack.set_visible_child_name ("TestResults View");
+			return;
+		}
 	}
 }

@@ -56,23 +56,34 @@ public class Socratest.TestView : Gtk.Box {
 	}
 
 	[GtkCallback]
-	void next_button_clicked (Button button) {
+	private void next_button_clicked (Button button) {
 		string entered_anwser = current_anwser.get_text ();
 		string true_anwser = test.get_current_anwser ();
+
+		int index = test.get_index () + 1;
+		int length = test.get_length ();
+		if (index >= length) {
+			action_manager.generate_results (this.test);
+			return;
+		}
 
 		bool anwsered_right = test.check_anwser (entered_anwser);
 		feedback.label = "";
 		if (!anwsered_right) {
-			feedback.label = _(@"Your anwser: $entered_anwser,\nThe real anwser: $true_anwser");
+			feedback.label = _(@"Your anwser: $entered_anwser\nCorrect anwser: $true_anwser");
 		}
 
-
-		this.current_word.label = test.get_current_word ();
-		int index = test.get_index () + 1;
-		int length = test.get_length ();
+		index += 1; // since we went to the next word the index should be one more
 		this.current_word_of.label =  @"$index / $length";
+		this.current_word.label = test.get_current_word ();
 		current_anwser.set_text ("");
+
 		return;
+	}
+
+	[GtkCallback]
+	private void activate_gtk_entry () {
+
 	}
 
 	public void init () {
