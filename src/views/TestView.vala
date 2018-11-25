@@ -78,6 +78,8 @@ public class Socratest.TestView : Gtk.Box {
 		this.current_word.label = test.get_current_word ();
 		current_answer.set_text ("");
 
+		current_answer.has_focus = true;
+		next_button.has_focus = false;
 		return;
 	}
 
