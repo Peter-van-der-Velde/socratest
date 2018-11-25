@@ -60,14 +60,15 @@ public class Socratest.TestView : Gtk.Box {
 		string entered_answer = current_answer.get_text ();
 		string true_answer = test.get_current_answer ();
 
-		int index = test.get_index () + 1;
+		bool answered_right = test.check_answer (entered_answer);
+
+		int index = test.get_index ();
 		int length = test.get_length ();
 		if (index >= length) {
 			action_manager.generate_results (this.test);
 			return;
 		}
 
-		bool answered_right = test.check_answer (entered_answer);
 		feedback.label = "";
 		if (!answered_right) {
 			feedback.label = _(@"Your answer: $entered_answer\nCorrect answer: $true_answer");

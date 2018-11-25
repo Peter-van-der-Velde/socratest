@@ -80,7 +80,7 @@ namespace Socratest.Widgets {
 			this.course_entry.set_placeholder_text (_("German"));
 			this.year_label.set_label (_("Year:"));
 			this.word_list_label.set_label (_("Wordlist:"));
-			this.wl_buffer.set_text (_("Word = Anwser\nWord 2 = Anwser 2"));
+			this.wl_buffer.set_text (_("Word = Answer\nWord 2 = Answer 2"));
 			this.add_button.set_label (_("Add"));
 			this.cancel_button.set_label (_("Cancel"));
 

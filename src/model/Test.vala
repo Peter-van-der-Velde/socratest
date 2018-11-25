@@ -105,13 +105,10 @@ public class Test {
 	}
 
 	public int get_amount_of_correct_answers () {
-		if (repeat) {
-			print("[WRN] for repeated answers the get_amount_of_correct_answers () is not implemented yet");
-			return 0;
-		}
 		int correct_answers_amount = 0;
 
 		foreach (Word word in (Word[]) word_list.words.to_array ()) {
+
 			if (word.get_anwesered_correctly ())
 				correct_answers_amount++;
 		}
@@ -120,14 +117,8 @@ public class Test {
 	}
 
 	public float get_score () {
-		if (repeat) {
-			print("[WRN] for repeated answers the get_score () is not implemented yet");
-			return 0;
-		}
 
-		float score = (float) get_amount_of_correct_answers ()  / (float) get_length ();
-
-		return score;
+		return (float) get_amount_of_correct_answers ()  / (float) get_length ();
 	}
 
 }
