@@ -91,7 +91,6 @@ namespace Socratest.Widgets {
 			this.id = id;
 
 			if (id != -1) { // -1 is passed to the function if there is not already a wordlist
-				print ("EDIT");
 				this.add_button.set_label (_("Edit"));
 
 				foreach (var word_list in word_lists) {

@@ -58,14 +58,12 @@ namespace Socratest.Views {
 
 			this.test_db = new TestDB ();
 			this.word_lists = test_db.get_wordlists ();
-			print ("[DBG] Amount of wordlists: %d\n", word_lists.length);
 			update_test_list ();
 		}
 
 		[GtkCallback]
 		private void search_entry_changed (Editable search_entry) {
 			search_entry_text = ((SearchEntry) search_entry).get_text ();
-			print ("wrote \"%s\" in the search entry\n", search_entry_text);
 		}
 
 		[GtkCallback]
@@ -103,7 +101,6 @@ namespace Socratest.Views {
 				int year;
 
 				model.get (iter, 0, out id, 1, out course, 2, out name, 3, out year);
-       			print ("edit id:%d c:%s n:%s y:%d...\n", id, course, name, year);
        			AddTestDialog add_test_dialog = new AddTestDialog (parent, action_manager, id);
 				add_test_dialog.show_all ();
     		}
@@ -121,7 +118,6 @@ namespace Socratest.Views {
 				int year;
 
 				model.get (iter, 0, out id, 1, out course, 2, out name, 3, out year);
-       			print ("removing id:%d c:%s n:%s y:%d...\n", id, course, name, year);
        			test_db.remove_word_list (id);
        			update_test_list ();
     		}
@@ -130,7 +126,6 @@ namespace Socratest.Views {
 		public void update_test_list () {
 			this.test_db = new TestDB ();
 			this.word_lists = test_db.get_wordlists ();
-			print ("[DBG] Amount of wordlists: %d\n", word_lists.length);
 
 			test_list_store.clear ();
 			Gtk.TreeIter iter;
