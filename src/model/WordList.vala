@@ -41,14 +41,14 @@ public class WordList {
 
 	private ArrayList parse_word_list (string word_list) {
 		var words = new ArrayList<Word> ();
-		string[] word_anwsers = word_list.split ("\n");
-		foreach (string word_anwser_string in word_anwsers) {
-			string[] word_anwser_arr = word_anwser_string.split ("=");
-			if (word_anwser_arr.length < 2)
+		string[] word_answers = word_list.split ("\n");
+		foreach (string word_answer_string in word_answers) {
+			string[] word_answer_arr = word_answer_string.split ("=");
+			if (word_answer_arr.length < 2)
 				continue;
-			string word = word_anwser_arr[0].strip ();
-			string anwser = word_anwser_arr[1].strip ();
-			words.add (new Word (word, anwser));
+			string word = word_answer_arr[0].strip ();
+			string answer = word_answer_arr[1].strip ();
+			words.add (new Word (word, answer));
 		}
 		return words;
 	}

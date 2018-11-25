@@ -109,6 +109,8 @@ namespace Socratest.Controllers {
 
 		public void generate_results (Test test) {
 			app_controller.main_stack.set_visible_child_name ("TestResults View");
+			app_controller.test_results.init (test);
+
 			return;
 		}
 	}

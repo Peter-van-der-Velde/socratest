@@ -55,7 +55,7 @@ public class Socratest.TestSettings : Gtk.Box {
 		// manually set the text so it can easily be translated using po
 		order.set_text (_("Order:"));
 		type_label.set_text (_("Type of test:"));
-		repeat_label.set_text (_("Repeat until every anwser is correct"));
+		repeat_label.set_text (_("Repeat until every answer is correct"));
 
 		order_combobox.append ("LR", "L - R");
 		order_combobox.append ("RL", "R - L");

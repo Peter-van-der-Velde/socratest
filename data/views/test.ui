@@ -48,9 +48,10 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="current_anwser">
+          <object class="GtkEntry" id="current_answer">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="has_focus">True</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="margin_left">10</property>

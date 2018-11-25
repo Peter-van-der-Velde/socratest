@@ -33,7 +33,7 @@ namespace Socratest.Controllers {
 		private Welcome                    	welcome_view;
 		public Home 						home_view { get; private set; default = null; }
 		public TestView 					test_view;
-		private TestResults 				test_results;
+		public TestResults 					test_results;
 		private TestSettings 				test_settings;
 		private Gtk.HeaderBar              	headerbar;
 		public Gtk.ApplicationWindow      	window { get; private set; default = null; }

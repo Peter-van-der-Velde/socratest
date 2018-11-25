@@ -31,7 +31,7 @@ public class Socratest.TestView : Gtk.Box {
 	private Label current_word;
 
 	[GtkChild]
-	private Entry current_anwser;
+	private Entry current_answer;
 
 	[GtkChild]
 	private Label feedback;
@@ -57,8 +57,8 @@ public class Socratest.TestView : Gtk.Box {
 
 	[GtkCallback]
 	private void next_button_clicked () {
-		string entered_anwser = current_anwser.get_text ();
-		string true_anwser = test.get_current_anwser ();
+		string entered_answer = current_answer.get_text ();
+		string true_answer = test.get_current_answer ();
 
 		int index = test.get_index () + 1;
 		int length = test.get_length ();
@@ -67,16 +67,16 @@ public class Socratest.TestView : Gtk.Box {
 			return;
 		}
 
-		bool anwsered_right = test.check_anwser (entered_anwser);
+		bool answered_right = test.check_answer (entered_answer);
 		feedback.label = "";
-		if (!anwsered_right) {
-			feedback.label = _(@"Your anwser: $entered_anwser\nCorrect anwser: $true_anwser");
+		if (!answered_right) {
+			feedback.label = _(@"Your answer: $entered_answer\nCorrect answer: $true_answer");
 		}
 
 		index += 1; // since we went to the next word the index should be one more
 		this.current_word_of.label =  @"$index / $length";
 		this.current_word.label = test.get_current_word ();
-		current_anwser.set_text ("");
+		current_answer.set_text ("");
 
 		return;
 	}
@@ -88,7 +88,7 @@ public class Socratest.TestView : Gtk.Box {
 
 	public void init () {
 		feedback.label = ""; // clean the feedback label
-		current_anwser.set_text ("");
+		current_answer.set_text ("");
 
 		// get the selected wordlist information
 		WordList wl = action_manager.get_current_wordlist ();

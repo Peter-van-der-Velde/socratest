@@ -22,14 +22,14 @@
 
 public class Word {
 	private string word;
-	private string anwser;
-	private bool anwsered_corectly;
+	private string answer;
+	private bool answered_corectly;
 	private int amount_of_tries;
 
-	public Word (string word, string anwser) {
+	public Word (string word, string answer) {
 		this.word = word;
-		this.anwser = anwser;
-		anwsered_corectly = false;
+		this.answer = answer;
+		answered_corectly = false;
 		amount_of_tries = 0;
 	}
 
@@ -37,16 +37,21 @@ public class Word {
 		return word;
 	}
 
-	public string get_anwser () {
-		return anwser;
+	public string get_answer () {
+		return answer;
 	}
 
 	public int get_amount_of_tries () {
 		return amount_of_tries;
 	}
 
+	public bool get_anwesered_correctly () {
+		return answered_corectly;
+	}
+
 	public void got_right () {
-		anwsered_corectly = true;
+		amount_of_tries++;
+		answered_corectly = true;
 	}
 
 	public void got_wrong () {

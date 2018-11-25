@@ -18,6 +18,7 @@ sources += files(
 
     'widgets/AddTestDialog.vala',
     'widgets/HeaderBar.vala',
+    'widgets/circular-progress-bar.vala',
 
     'Application.vala',
     'Main.vala',

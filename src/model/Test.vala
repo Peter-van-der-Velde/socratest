@@ -27,7 +27,7 @@ public class Test {
 	private bool repeat;
 	private int current_word_iter;
 	private string last_word;
-	private string last_anwser;
+	private string last_answer;
 
 	/**
 	 * The {@code Test} class.
@@ -42,18 +42,18 @@ public class Test {
 		switch (order) {
 			case "L - R":
 				break;
-			case "R - L": // reverse the words with the anwsers
+			case "R - L": // reverse the words with the answers
 				Gee.ArrayList<Word> rl_words = new Gee.ArrayList<Word> ();
 
 				foreach (Word word in ((Word[]) this.word_list.words.to_array ())) {
-					rl_words.add (new Word (word.get_anwser (), word.get_word ()));
+					rl_words.add (new Word (word.get_answer (), word.get_word ()));
 				}
 				this.word_list.words = rl_words;
 				break;
 			case "Both":
 				Word[] t_words = ((Word[]) this.word_list.words.to_array ());
 				foreach (Word word in t_words) {
-					((Gee.ArrayList<Word>) this.word_list.words).add (new Word (word.get_anwser (), word.get_word ()));
+					((Gee.ArrayList<Word>) this.word_list.words).add (new Word (word.get_answer (), word.get_word ()));
 				}
 				break;
 			case "Random":
@@ -69,20 +69,20 @@ public class Test {
 		return cw;
 	}
 
-	public string get_current_anwser () {
+	public string get_current_answer () {
 		Word[] w = (Word[]) word_list.words.to_array ();
-		string ca = w[current_word_iter].get_anwser ();
+		string ca = w[current_word_iter].get_answer ();
 		return ca;
 	}
 
-	public bool check_anwser (string anwser) {
+	public bool check_answer (string answer) {
 		Word[] w = (Word[]) word_list.words.to_array ();
-		string ca = w[current_word_iter].get_anwser ();
+		string ca = w[current_word_iter].get_answer ();
 
-		if (ca.down () != anwser.strip ().down ()) {
+		if (ca.down () != answer.strip ().down ()) {
 			((Word[]) word_list.words.to_array ())[current_word_iter].got_wrong ();
 			if (repeat) {
-				((Gee.ArrayList<Word>) this.word_list.words).add (new Word (get_current_word (), get_current_anwser ()));
+				((Gee.ArrayList<Word>) this.word_list.words).add (new Word (get_current_word (), get_current_answer ()));
 			}
 			current_word_iter++;
 			return false;
@@ -102,6 +102,32 @@ public class Test {
 
 	public int get_length () {
 		return word_list.words.size;
+	}
+
+	public int get_amount_of_correct_answers () {
+		if (repeat) {
+			print("[WRN] for repeated answers the get_amount_of_correct_answers () is not implemented yet");
+			return 0;
+		}
+		int correct_answers_amount = 0;
+
+		foreach (Word word in (Word[]) word_list.words.to_array ()) {
+			if (word.get_anwesered_correctly ())
+				correct_answers_amount++;
+		}
+
+		return correct_answers_amount;
+	}
+
+	public float get_score () {
+		if (repeat) {
+			print("[WRN] for repeated answers the get_score () is not implemented yet");
+			return 0;
+		}
+
+		float score = (float) get_amount_of_correct_answers ()  / (float) get_length ();
+
+		return score;
 	}
 
 }
