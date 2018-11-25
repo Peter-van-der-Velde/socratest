@@ -3,8 +3,8 @@
 <interface>
   <requires lib="gtk+" version="3.10"/>
   <object class="GtkTextBuffer" id="wl_buffer">
-    <property name="text" translatable="yes">Word = Anwser
-Word 2 = Anwser 2</property>
+    <property name="text" translatable="yes">Word = Answer
+Word 2 = Answer 2</property>
   </object>
   <template class="SocratestWidgetsAddTestDialog" parent="GtkDialog">
     <property name="can_focus">False</property>
