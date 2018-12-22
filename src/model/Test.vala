@@ -57,8 +57,17 @@ public class Test {
 				}
 				break;
 			case "Random":
-				// TODO:
-				// this
+				Gee.ArrayList<Word> t_words = new Gee.ArrayList<Word> ();
+				foreach (Word word in ((Word[]) this.word_list.words.to_array ())) {
+					t_words.add (word);
+				}
+
+				Random.set_seed (0);
+				while (t_words.size > 0) {
+					int pos = Random.int_range (0, t_words.size);
+					((Gee.ArrayList<Word>) this.word_list.words).add (t_words[pos]);
+					t_words.remove_at (pos);
+				}
 				break;
 		}
 	}
